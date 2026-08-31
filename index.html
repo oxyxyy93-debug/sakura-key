@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 00xy Sakura - Key System</title>
+    
+    <style>
+        /* ============================================================ */
+        /* BASE STYLES
+        /* ============================================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Gotham', sans-serif;
+            background: #0a0a0e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        /* ============================================================ */
+        /* SAKURA BACKGROUND EFFECTS
+        /* ============================================================ */
+        
+        .sakura-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a0a14 0%, #0a0a0e 70%);
+            z-index: -1;
+        }
+        
+        /* Glow orbs */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .glow-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #9b4974;
+            top: -100px;
+            right: -100px;
+            animation: floatGlow 8s ease-in-out infinite;
+        }
+        
+        .glow-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: #f489be;
+            bottom: -50px;
+            left: -50px;
+            animation: floatGlow 6s ease-in-out infinite reverse;
+        }
+        
+        @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -30px) scale(1.1); }
+        }
+        
+        /* Falling petals (CSS only) */
+        .petal {
+            position: fixed;
+            width: 12px;
+            height: 8px;
+            background: #ffb6c1;
+            border-radius: 50% 0 50% 0;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg) scale(1);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(calc(100vh + 50px)) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+        
+        /* ============================================================ */
+        /* MAIN CARD
+        /* ============================================================ */
+        
+        .card {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(145deg, #101016, #16161a);
+            border: 1px solid rgba(244, 137, 190, 0.15);
+            border-radius: 24px;
+            padding: 50px 45px 40px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.8),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            text-align: center;
+            animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        
+        @keyframes cardIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Top accent line */
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #f489be, #ffb6c1);
+            border-radius: 3px;
+            margin: 0 auto 20px;
+        }
+        
+        /* ============================================================ */
+        /* LOGO & TITLE
+        /* ============================================================ */
+        
+        .logo-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .title {
+            color: #f8f2f7;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .title span {
+            background: linear-gradient(135deg, #f489be, #ffb6c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #a497a2;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 4px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* ============================================================ */
+        /* KEY DISPLAY
+        /* ============================================================ */
+        
+        .key-container {
+            background: #0a0a0e;
+            border: 1px solid rgba(244, 137, 190, 0.2);
+            border-radius: 14px;
+            padding: 20px 25px;
+            margin: 25px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .key-container:hover {
+            border-color: rgba(244, 137, 190, 0.5);
+            box-shadow: 0 0 30px rgba(244, 137, 190, 0.05);
+        }
+        
+        .key-label {
+            color: #a497a2;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .key-display {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: center;
+            outline: none;
+        }
+        
+        .key-display::selection {
+            background: rgba(244, 137, 190, 0.3);
+        }
+        
+        /* ============================================================ */
+        /* STATUS INDICATOR
+        /* ============================================================ */
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #70de9d;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+        
+        .status-text {
+            color: #70de9d;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* ============================================================ */
+        /* BUTTONS
+        /* ============================================================ */
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #9b4974, #f489be);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 14px 30px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(244, 137, 190, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0px) scale(0.98);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #a497a2;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn-group .btn-secondary {
+            flex: 1;
+            margin-top: 0;
+        }
+        
+        /* ============================================================ */
+        /* FOOTER
+        /* ============================================================ */
+        
+        .footer {
+            color: #4a3a47;
+            font-size: 9px;
+            letter-spacing: 1px;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 18px;
+        }
+        
+        .footer span {
+            color: #f489be;
+        }
+        
+        /* ============================================================ */
+        /* TOAST NOTIFICATION
+        /* ============================================================ */
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(16, 16, 22, 0.95);
+            border: 1px solid rgba(244, 137, 190, 0.2);
+            border-radius: 12px;
+            padding: 14px 28px;
+            color: #f8f2f7;
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .toast-success .toast-icon { color: #70de9d; }
+        .toast-error .toast-icon { color: #ff5f7d; }
+        
+        /* ============================================================ */
+        /* RESPONSIVE
+        /* ============================================================ */
+        
+        @media (max-width: 500px) {
+            .card {
+                padding: 30px 20px 25px;
+            }
+            
+            .key-display {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn-group .btn-secondary {
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- BACKGROUND EFFECTS
+<!-- ============================================================ -->
+
+<div class="sakura-bg"></div>
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+
+<!-- Falling petals (generated with JS) -->
+
+<!-- ============================================================ -->
+<!-- MAIN CARD
+<!-- ============================================================ -->
+
+<div class="card" id="card">
+    
+    <!-- Accent line -->
+    <div class="accent-line"></div>
+    
+    <!-- Logo -->
+    <span class="logo-icon">🌸</span>
+    
+    <!-- Title -->
+    <div class="title">00xy <span>Sakura</span></div>
+    <div class="subtitle">Premium Key System</div>
+    
+    <!-- Status -->
+    <div class="status">
+        <div class="status-dot"></div>
+        <span class="status-text" id="statusText">● Key Ready</span>
+    </div>
+    
+    <!-- Key Display -->
+    <div class="key-container">
+        <span class="key-label">🔑 Your Free Key</span>
+        <input 
+            type="text" 
+            class="key-display" 
+            id="keyDisplay" 
+            value="SAKURA-2026" 
+            readonly
+        >
+    </div>
+    
+    <!-- Primary Button - Copy Key -->
+    <button class="btn-primary" id="copyBtn">
+        📋 Copy Key
+    </button>
+    
+    <!-- Secondary Buttons -->
+    <div class="btn-group">
+        <a href="https://work.ink" class="btn-secondary" target="_blank">
+            🌐 Work.ink
+        </a>
+        <a href="https://discord.gg/00xy" class="btn-secondary" target="_blank">
+            💬 Discord
+        </a>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        ©2026 <span>Sakura Studios</span> • All Rights Reserved
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOAST NOTIFICATION
+<!-- ============================================================ -->
+
+<div class="toast" id="toast">
+    <span class="toast-icon">✅</span>
+    <span id="toastMessage">Copied to clipboard!</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT
+<!-- ============================================================ -->
+
+<script>
+    // ============================================================
+    // 1. GENERATE RANDOM KEY
+    // ============================================================
+    
+    function generateKey() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let key = '';
+        for (let i = 0; i < 12; i++) {
+            if (i > 0 && i % 4 === 0) key += '-';
+            key += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return key;
+    }
+    
+    // ============================================================
+    // 2. DISPLAY KEY (récupère depuis l'URL ou génère)
+    // ============================================================
+    
+    const keyDisplay = document.getElementById('keyDisplay');
+    
+    // Essayer de récupérer la clé depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlKey = urlParams.get('key');
+    
+    if (urlKey && urlKey.length > 0) {
+        keyDisplay.value = urlKey;
+    } else {
+        // Générer une clé aléatoire
+        keyDisplay.value = generateKey();
+    }
+    
+    // ============================================================
+    // 3. COPY BUTTON
+    // ============================================================
+    
+    const copyBtn = document.getElementById('copyBtn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const statusText = document.getElementById('statusText');
+    
+    function showToast(message, type = 'success') {
+        toast.className = 'toast show toast-' + type;
+        toastMessage.textContent = message;
+        
+        setTimeout(() => {
+            toast.className = 'toast';
+        }, 2500);
+    }
+    
+    copyBtn.addEventListener('click', function() {
+        const key = keyDisplay.value;
+        
+        // Copier dans le presse-papier
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(key).then(() => {
+                showToast('✅ Key copied to clipboard!');
+                statusText.textContent = '● Copied!';
+                statusText.style.color = '#70de9d';
+                
+                // Animation du bouton
+                copyBtn.innerHTML = '✅ Copied!';
+                copyBtn.style.background = 'linear-gradient(135deg, #70de9d, #4a9e6a)';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = '📋 Copy Key';
+                    copyBtn.style.background = '';
+                    statusText.textContent = '● Key Ready';
+                    statusText.style.color = '#70de9d';
+                }, 2000);
+            }).catch(() => {
+                // Fallback pour les anciens navigateurs
+                fallbackCopy(key);
+            });
+        } else {
+            // Fallback
+            fallbackCopy(key);
+        }
+    });
+    
+    function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        
+        try {
+            document.execCommand('copy');
+            showToast('✅ Key copied to clipboard!');
+        } catch (err) {
+            showToast('❌ Failed to copy. Please copy manually.', 'error');
+        }
+        
+        document.body.removeChild(textarea);
+    }
+    
+    // ============================================================
+    // 4. FALLING PETALS (JS)
+    // ============================================================
+    
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.left = Math.random() * 100 + '%';
+        petal.style.width = (8 + Math.random() * 10) + 'px';
+        petal.style.height = (6 + Math.random() * 8) + 'px';
+        petal.style.animationDuration = (8 + Math.random() * 12) + 's';
+        petal.style.animationDelay = (Math.random() * 5) + 's';
+        petal.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        petal.style.opacity = 0.2 + Math.random() * 0.3;
+        document.body.appendChild(petal);
+        
+        // Supprimer après l'animation
+        setTimeout(() => {
+            petal.remove();
+        }, 20000);
+    }
+    
+    // Créer des pétales en continu
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => createPetal(), i * 200);
+    }
+    
+    setInterval(() => {
+        if (Math.random() < 0.3) {
+            createPetal();
+        }
+    }, 2000);
+    
+    // ============================================================
+    // 5. GLOW ANIMATION
+    // ============================================================
+    
+    function animateGlow() {
+        const orbs = document.querySelectorAll('.glow-orb');
+        orbs.forEach((orb, index) => {
+            const x = Math.sin(Date.now() / 3000 + index * 2) * 30;
+            const y = Math.cos(Date.now() / 4000 + index * 2) * 30;
+            orb.style.transform = `translate(${x}px, ${y}px) scale(${1 + Math.sin(Date.now() / 5000 + index) * 0.05})`;
+        });
+        requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+    
+    // ============================================================
+    // 6. KEYBOARD SHORTCUTS
+    // ============================================================
+    
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+C ou Cmd+C pour copier
+        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+            // Le comportement par défaut fonctionne sur l'input
+        }
+    });
+    
+    console.log('🌸 00xy Sakura Key System loaded');
+    console.log('🔑 Key:', keyDisplay.value);
+</script>
+</body>
+</html>
