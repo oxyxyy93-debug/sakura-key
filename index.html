@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌸 00xy Sakura - Get Your Key</title>
     <style>
-        /* Même style que avant mais avec quelques ajouts */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -30,7 +29,6 @@
         .title span { background: linear-gradient(135deg, #f489be, #ffb6c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { color: #a497a2; font-size: 12px; margin-top: 4px; }
         
-        /* Timer YouTube */
         .youtube-section {
             background: rgba(255,0,0,0.05);
             border: 1px solid rgba(255,0,0,0.1);
@@ -38,13 +36,7 @@
             padding: 16px;
             margin: 20px 0;
         }
-        .youtube-section .icon { font-size: 32px; }
-        .timer {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffb6c1;
-            margin: 8px 0;
-        }
+        .timer { font-size: 28px; font-weight: 700; color: #ffb6c1; margin: 8px 0; }
         .timer-btn {
             background: rgba(255,0,0,0.15);
             color: #ff6b6b;
@@ -56,20 +48,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .timer-btn:hover:not(:disabled) {
-            background: rgba(255,0,0,0.25);
-        }
-        .timer-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        .timer-btn.done {
-            background: rgba(112, 222, 157, 0.15);
-            color: #70de9d;
-            border-color: rgba(112, 222, 157, 0.2);
-        }
+        .timer-btn:hover:not(:disabled) { background: rgba(255,0,0,0.25); }
+        .timer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .timer-btn.done { background: rgba(112, 222, 157, 0.15); color: #70de9d; border-color: rgba(112, 222, 157, 0.2); }
         
-        /* Key */
         .key-container {
             background: #0a0a0e;
             border: 1px solid rgba(244, 137, 190, 0.2);
@@ -119,17 +101,15 @@
     <div class="title">00xy <span>Sakura</span></div>
     <div class="subtitle">🔑 Générateur de clé gratuit</div>
     
-    <!-- YouTube Verification -->
     <div class="youtube-section">
-        <div class="icon">📹</div>
+        <div style="font-size:32px;">📹</div>
         <div style="color:#f8f2f7;font-size:14px;font-weight:600;margin:4px 0;">Regardez la vidéo</div>
-        <div style="color:#a497a2;font-size:11px;">Regardez 10 secondes pour débloquer votre clé</div>
+        <div style="color:#a497a2;font-size:11px;">Attendez 10 secondes pour débloquer votre clé</div>
         <div class="timer" id="timerDisplay">0s</div>
         <button class="timer-btn" id="watchBtn">▶ Regarder</button>
         <div class="status" id="statusText">⏳ En attente...</div>
     </div>
     
-    <!-- Key -->
     <div class="key-container" id="keyContainer">
         <div style="color:#a497a2;font-size:10px;text-transform:uppercase;letter-spacing:2px;">🔑 Votre clé</div>
         <input type="text" class="key-display" id="keyDisplay" readonly>
@@ -141,7 +121,7 @@
 
 <script>
     // ============================================================
-    // 1. FAUSSE VÉRIFICATION YOUTUBE (timer 10s)
+    // 1. FAUSSE VÉRIFICATION (timer 10s)
     // ============================================================
     
     let isWatching = false;
@@ -178,7 +158,6 @@
                 statusText.textContent = '✅ Vidéo regardée ! Clé débloquée !';
                 statusText.className = 'status done';
                 
-                // Générer et afficher la clé
                 generateAndShowKey();
             }
         }, 1000);
@@ -187,29 +166,34 @@
     watchBtn.addEventListener('click', startTimer);
     
     // ============================================================
-    // 2. GÉNÉRATION DE CLÉ
+    // 2. GÉNÉRATION DE CLÉ (valeurs prédéfinies)
     // ============================================================
     
-    function generateKey() {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let key = '';
-        for (let i = 0; i < 12; i++) {
-            if (i > 0 && i % 4 === 0) key += '-';
-            key += chars[Math.floor(Math.random() * chars.length)];
-        }
-        return key;
+    // ⚠️ Ces clés doivent être IDENTIQUES dans l'UI Roblox
+    const VALID_KEYS = [
+        "SAKURA-2026",
+        "SAKURA2026",
+        "ABCD-1234-EFGH",
+        "FREE-00XY",
+        "DEMO-KEY",
+        "X7K9-2P4M-8R3T",
+        "S1K2-A3R4-U5T6",
+        "P9R8-O7I6-U5Y4"
+    ];
+    
+    function getRandomKey() {
+        return VALID_KEYS[Math.floor(Math.random() * VALID_KEYS.length)];
     }
     
     function generateAndShowKey() {
-        const key = generateKey();
+        const key = getRandomKey();
         keyDisplay.value = key;
         keyContainer.classList.add('show');
         
-        // Animation bonus
-        keyDisplay.style.animation = 'none';
-        setTimeout(() => {
-            keyDisplay.style.animation = 'fadeIn 0.5s ease';
-        }, 10);
+        // Ajouter la clé dans l'URL pour référence
+        const url = new URL(window.location);
+        url.searchParams.set('key', key);
+        window.history.pushState({}, '', url);
     }
     
     // ============================================================
@@ -241,6 +225,21 @@
             }, 2000);
         }
     });
+    
+    // ============================================================
+    // 4. RÉCUPÉRER LA CLÉ DEPUIS L'URL
+    // ============================================================
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlKey = urlParams.get('key');
+    if (urlKey && VALID_KEYS.includes(urlKey)) {
+        keyDisplay.value = urlKey;
+        keyContainer.classList.add('show');
+        document.getElementById('statusText').textContent = '✅ Clé chargée depuis l\'URL !';
+        document.getElementById('statusText').className = 'status done';
+        document.getElementById('watchBtn').className = 'timer-btn done';
+        document.getElementById('watchBtn').textContent = '✅ Vérifié !';
+    }
 </script>
 </body>
 </html>
