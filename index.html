@@ -4,316 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌸 00xy Sakura - Get Your Key</title>
-    
     <style>
-        /* ============================================================ */
-        /* BASE STYLES
-        /* ============================================================ */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        /* Même style que avant mais avec quelques ajouts */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', 'Gotham', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: #0a0a0e;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             padding: 20px;
         }
-        
-        /* ============================================================ */
-        /* SAKURA BACKGROUND EFFECTS
-        /* ============================================================ */
-        
-        .sakura-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, #1a0a14 0%, #0a0a0e 70%);
-            z-index: -1;
-        }
-        
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .glow-orb-1 {
-            width: 500px;
-            height: 500px;
-            background: #9b4974;
-            top: -100px;
-            right: -100px;
-            animation: floatGlow 8s ease-in-out infinite;
-        }
-        
-        .glow-orb-2 {
-            width: 300px;
-            height: 300px;
-            background: #f489be;
-            bottom: -50px;
-            left: -50px;
-            animation: floatGlow 6s ease-in-out infinite reverse;
-        }
-        
-        @keyframes floatGlow {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -30px) scale(1.1); }
-        }
-        
-        /* Petals */
-        .petal {
-            position: fixed;
-            width: 12px;
-            height: 8px;
-            background: #ffb6c1;
-            border-radius: 50% 0 50% 0;
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 0;
-            animation: fall linear infinite;
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-50px) rotate(0deg) scale(1); opacity: 0.4; }
-            100% { transform: translateY(calc(100vh + 50px)) rotate(720deg) scale(0.5); opacity: 0; }
-        }
-        
-        /* ============================================================ */
-        /* MAIN CARD
-        /* ============================================================ */
-        
         .card {
-            position: relative;
-            z-index: 1;
             background: linear-gradient(145deg, #101016, #16161a);
             border: 1px solid rgba(244, 137, 190, 0.15);
             border-radius: 24px;
             padding: 40px 35px 35px;
-            max-width: 520px;
+            max-width: 480px;
             width: 100%;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
             text-align: center;
-            animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            transform: scale(0.9);
-            opacity: 0;
-            max-height: 90vh;
-            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
+        .title { color: #f8f2f7; font-size: 24px; font-weight: 800; }
+        .title span { background: linear-gradient(135deg, #f489be, #ffb6c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #a497a2; font-size: 12px; margin-top: 4px; }
         
-        .card::-webkit-scrollbar { width: 4px; }
-        .card::-webkit-scrollbar-track { background: transparent; }
-        .card::-webkit-scrollbar-thumb { background: #9b4974; border-radius: 4px; }
-        
-        @keyframes cardIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        .accent-line {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #f489be, #ffb6c1);
-            border-radius: 3px;
-            margin: 0 auto 18px;
-        }
-        
-        /* ============================================================ */
-        /* LOGO & TITLE
-        /* ============================================================ */
-        
-        .logo-icon { font-size: 42px; display: block; margin-bottom: 4px; }
-        .title { color: #f8f2f7; font-size: 22px; font-weight: 800; letter-spacing: 1px; }
-        .title span { background: linear-gradient(135deg, #f489be, #ffb6c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .subtitle { color: #a497a2; font-size: 11px; font-weight: 500; margin-top: 2px; letter-spacing: 3px; text-transform: uppercase; }
-        
-        /* ============================================================ */
-        /* PROGRESS BAR
-        /* ============================================================ */
-        
-        .progress-section {
-            margin: 20px 0 15px;
-        }
-        
-        .progress-text {
-            color: #a497a2;
-            font-size: 11px;
-            margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #1a1a22;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #9b4974, #f489be);
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        /* ============================================================ */
-        /* TASKS LIST
-        /* ============================================================ */
-        
-        .tasks-title {
-            color: #f8f2f7;
-            font-size: 14px;
-            font-weight: 700;
-            margin: 18px 0 12px;
-            text-align: left;
-        }
-        
-        .task-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+        /* Timer YouTube */
+        .youtube-section {
+            background: rgba(255,0,0,0.05);
+            border: 1px solid rgba(255,0,0,0.1);
             border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
+            padding: 16px;
+            margin: 20px 0;
         }
-        
-        .task-item:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(244, 137, 190, 0.1);
+        .youtube-section .icon { font-size: 32px; }
+        .timer {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffb6c1;
+            margin: 8px 0;
         }
-        
-        .task-item.done {
-            border-color: rgba(112, 222, 157, 0.3);
-            background: rgba(112, 222, 157, 0.05);
-        }
-        
-        .task-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-align: left;
-        }
-        
-        .task-icon {
-            font-size: 20px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.03);
+        .timer-btn {
+            background: rgba(255,0,0,0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(255,0,0,0.2);
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .task-name {
-            color: #f8f2f7;
+            padding: 8px 20px;
             font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .task-desc {
-            color: #a497a2;
-            font-size: 10px;
-            display: block;
-            margin-top: 1px;
-        }
-        
-        .task-status {
-            font-size: 18px;
-            min-width: 28px;
-            text-align: center;
-        }
-        
-        .task-status.pending { color: #a497a2; }
-        .task-status.done { color: #70de9d; }
-        
-        .task-btn {
-            background: rgba(244, 137, 190, 0.12);
-            color: #f489be;
-            border: none;
-            border-radius: 8px;
-            padding: 5px 14px;
-            font-size: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
-        
-        .task-btn:hover {
-            background: rgba(244, 137, 190, 0.25);
-            transform: scale(1.02);
+        .timer-btn:hover:not(:disabled) {
+            background: rgba(255,0,0,0.25);
         }
-        
-        .task-btn.done {
+        .timer-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .timer-btn.done {
             background: rgba(112, 222, 157, 0.15);
             color: #70de9d;
-            cursor: default;
+            border-color: rgba(112, 222, 157, 0.2);
         }
         
-        .task-btn.done:hover {
-            transform: none;
-        }
-        
-        /* ============================================================ */
-        /* KEY DISPLAY (hidden until all tasks done)
-        /* ============================================================ */
-        
-        .key-section {
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            display: none;
-        }
-        
-        .key-section.show { display: block; animation: fadeIn 0.5s ease; }
-        
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
+        /* Key */
         .key-container {
             background: #0a0a0e;
             border: 1px solid rgba(244, 137, 190, 0.2);
             border-radius: 14px;
             padding: 16px 20px;
-            position: relative;
-            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
         }
-        
-        .key-container:hover {
-            border-color: rgba(244, 137, 190, 0.5);
-            box-shadow: 0 0 30px rgba(244, 137, 190, 0.05);
-        }
-        
-        .key-label {
-            color: #a497a2;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        
+        .key-container.show { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
         .key-display {
             color: #ffffff;
             font-size: 26px;
@@ -326,14 +92,7 @@
             text-align: center;
             outline: none;
         }
-        
-        .key-display::selection { background: rgba(244, 137, 190, 0.3); }
-        
-        /* ============================================================ */
-        /* BUTTONS
-        /* ============================================================ */
-        
-        .btn-primary {
+        .btn-copy {
             background: linear-gradient(135deg, #9b4974, #f489be);
             color: #ffffff;
             border: none;
@@ -343,298 +102,92 @@
             font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
             margin-top: 12px;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(244, 137, 190, 0.3);
-        }
-        
-        .btn-primary:active { transform: translateY(0px) scale(0.98); }
-        .btn-primary:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        
-        .btn-secondary {
-            background: rgba(255,255,255,0.04);
-            color: #a497a2;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            padding: 10px 16px;
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 100%;
             transition: all 0.3s ease;
-            margin-top: 8px;
-            text-decoration: none;
-            display: block;
         }
-        
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-            color: #ffffff;
-        }
-        
-        .btn-group { display: flex; gap: 8px; margin-top: 8px; }
-        .btn-group .btn-secondary { flex: 1; margin-top: 0; }
-        
-        /* ============================================================ */
-        /* FOOTER
-        /* ============================================================ */
-        
-        .footer {
-            color: #4a3a47;
-            font-size: 9px;
-            letter-spacing: 1px;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.03);
-            padding-top: 14px;
-        }
+        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(244, 137, 190, 0.3); }
+        .footer { color: #4a3a47; font-size: 9px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 14px; }
         .footer span { color: #f489be; }
-        
-        /* ============================================================ */
-        /* TOAST
-        /* ============================================================ */
-        
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(16,16,22,0.95);
-            border: 1px solid rgba(244,137,190,0.2);
-            border-radius: 12px;
-            padding: 12px 24px;
-            color: #f8f2f7;
-            font-size: 13px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            pointer-events: none;
-        }
-        
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-        .toast-success .toast-icon { color: #70de9d; }
-        .toast-error .toast-icon { color: #ff5f7d; }
-        
-        /* ============================================================ */
-        /* RESPONSIVE
-        /* ============================================================ */
-        
-        @media (max-width: 500px) {
-            .card { padding: 24px 16px 20px; }
-            .key-display { font-size: 18px; letter-spacing: 2px; }
-            .title { font-size: 18px; }
-            .task-item { flex-wrap: wrap; gap: 8px; }
-            .task-btn { width: 100%; text-align: center; }
-            .btn-group { flex-direction: column; }
-            .btn-group .btn-secondary { margin-top: 6px; }
-        }
+        .status { color: #a497a2; font-size: 12px; margin-top: 12px; }
+        .status.done { color: #70de9d; }
     </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- BACKGROUND EFFECTS
-<!-- ============================================================ -->
-
-<div class="sakura-bg"></div>
-<div class="glow-orb glow-orb-1"></div>
-<div class="glow-orb glow-orb-2"></div>
-
-<!-- ============================================================ -->
-<!-- MAIN CARD
-<!-- ============================================================ -->
-
-<div class="card" id="card">
-    
-    <div class="accent-line"></div>
-    <span class="logo-icon">🌸</span>
+<div class="card">
+    <div style="font-size:42px;">🌸</div>
     <div class="title">00xy <span>Sakura</span></div>
-    <div class="subtitle">🔐 Unlock Your Free Key</div>
+    <div class="subtitle">🔑 Générateur de clé gratuit</div>
     
-    <!-- Progress -->
-    <div class="progress-section">
-        <div class="progress-text">
-            <span id="progressLabel">Progress</span>
-            <span id="progressCount">0 / 3</span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
+    <!-- YouTube Verification -->
+    <div class="youtube-section">
+        <div class="icon">📹</div>
+        <div style="color:#f8f2f7;font-size:14px;font-weight:600;margin:4px 0;">Regardez la vidéo</div>
+        <div style="color:#a497a2;font-size:11px;">Regardez 10 secondes pour débloquer votre clé</div>
+        <div class="timer" id="timerDisplay">0s</div>
+        <button class="timer-btn" id="watchBtn">▶ Regarder</button>
+        <div class="status" id="statusText">⏳ En attente...</div>
     </div>
     
-    <!-- Tasks -->
-    <div class="tasks-title">📋 Complete these steps :</div>
-    
-    <div id="taskList">
-        <!-- Task 1 -->
-        <div class="task-item" data-task="1">
-            <div class="task-info">
-                <div class="task-icon">📹</div>
-                <div>
-                    <div class="task-name">Watch Tutorial</div>
-                    <span class="task-desc">Watch the full tutorial on YouTube</span>
-                </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span class="task-status pending" id="status1">◯</span>
-                <button class="task-btn" id="btn1" onclick="verifyTask(1)">Verify</button>
-            </div>
-        </div>
-        
-        <!-- Task 2 -->
-        <div class="task-item" data-task="2">
-            <div class="task-info">
-                <div class="task-icon">💬</div>
-                <div>
-                    <div class="task-name">Join Discord</div>
-                    <span class="task-desc">Join our official Discord server</span>
-                </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span class="task-status pending" id="status2">◯</span>
-                <button class="task-btn" id="btn2" onclick="verifyTask(2)">Verify</button>
-            </div>
-        </div>
-        
-        <!-- Task 3 -->
-        <div class="task-item" data-task="3">
-            <div class="task-info">
-                <div class="task-icon">⭐</div>
-                <div>
-                    <div class="task-name">Star on GitHub</div>
-                    <span class="task-desc">Give a star to our repository</span>
-                </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span class="task-status pending" id="status3">◯</span>
-                <button class="task-btn" id="btn3" onclick="verifyTask(3)">Verify</button>
-            </div>
-        </div>
+    <!-- Key -->
+    <div class="key-container" id="keyContainer">
+        <div style="color:#a497a2;font-size:10px;text-transform:uppercase;letter-spacing:2px;">🔑 Votre clé</div>
+        <input type="text" class="key-display" id="keyDisplay" readonly>
+        <button class="btn-copy" id="copyBtn">📋 Copier la clé</button>
     </div>
     
-    <!-- Key Section (hidden until all tasks done) -->
-    <div class="key-section" id="keySection">
-        <div class="key-container">
-            <span class="key-label">🔑 Your Free Key</span>
-            <input type="text" class="key-display" id="keyDisplay" value="SAKURA-2026" readonly>
-        </div>
-        
-        <button class="btn-primary" id="copyBtn">
-            📋 Copy Key
-        </button>
-    </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-        ©2026 <span>Sakura Studios</span> • All Rights Reserved
-    </div>
+    <div class="footer">©2026 <span>Sakura Studios</span> • All Rights Reserved</div>
 </div>
-
-<!-- ============================================================ -->
-<!-- TOAST
-<!-- ============================================================ -->
-
-<div class="toast" id="toast">
-    <span class="toast-icon">✅</span>
-    <span id="toastMessage">Copied to clipboard!</span>
-</div>
-
-<!-- ============================================================ -->
-<!-- JAVASCRIPT
-<!-- ============================================================ -->
 
 <script>
     // ============================================================
-    // 1. TASKS SYSTEM
+    // 1. FAUSSE VÉRIFICATION YOUTUBE (timer 10s)
     // ============================================================
     
-    const tasks = {
-        1: { done: false, name: 'Watch Tutorial' },
-        2: { done: false, name: 'Join Discord' },
-        3: { done: false, name: 'Star on GitHub' }
-    };
+    let isWatching = false;
+    let timeLeft = 0;
+    const requiredTime = 10;
+    let timerInterval = null;
+    let isVerified = false;
     
-    // Liens pour chaque tâche (popup ou redirection)
-    const taskLinks = {
-        1: 'https://youtube.com/watch?v=ton-tuto',
-        2: 'https://discord.gg/ton-invite',
-        3: 'https://github.com/oxyxyy93-debug/sakura-key'
-    };
+    const timerDisplay = document.getElementById('timerDisplay');
+    const watchBtn = document.getElementById('watchBtn');
+    const statusText = document.getElementById('statusText');
+    const keyContainer = document.getElementById('keyContainer');
+    const keyDisplay = document.getElementById('keyDisplay');
     
-    function updateProgress() {
-        const total = Object.keys(tasks).length;
-        const done = Object.values(tasks).filter(t => t.done).length;
-        const percent = Math.round((done / total) * 100);
+    function startTimer() {
+        if (isWatching) return;
+        isWatching = true;
+        timeLeft = 0;
+        watchBtn.textContent = '⏳ Regardez...';
+        watchBtn.disabled = true;
+        statusText.textContent = '📹 Regardez la vidéo...';
+        statusText.className = 'status';
         
-        document.getElementById('progressFill').style.width = percent + '%';
-        document.getElementById('progressCount').textContent = done + ' / ' + total;
-        
-        // Afficher la clé si toutes les tâches sont faites
-        if (done === total) {
-            document.getElementById('keySection').classList.add('show');
-            document.getElementById('progressLabel').textContent = '🎉 All done!';
-            generateKey();
-        } else {
-            document.getElementById('keySection').classList.remove('show');
-            document.getElementById('progressLabel').textContent = 'Progress';
-        }
+        timerInterval = setInterval(() => {
+            timeLeft++;
+            timerDisplay.textContent = timeLeft + 's';
+            
+            if (timeLeft >= requiredTime) {
+                clearInterval(timerInterval);
+                isWatching = false;
+                isVerified = true;
+                watchBtn.textContent = '✅ Vérifié !';
+                watchBtn.className = 'timer-btn done';
+                statusText.textContent = '✅ Vidéo regardée ! Clé débloquée !';
+                statusText.className = 'status done';
+                
+                // Générer et afficher la clé
+                generateAndShowKey();
+            }
+        }, 1000);
     }
     
-    function verifyTask(taskId) {
-        const task = tasks[taskId];
-        const btn = document.getElementById('btn' + taskId);
-        const status = document.getElementById('status' + taskId);
-        const item = document.querySelector(`.task-item[data-task="${taskId}"]`);
-        
-        if (task.done) {
-            showToast('✅ Task already verified!', 'success');
-            return;
-        }
-        
-        // Ouvrir le lien dans un nouvel onglet
-        if (taskLinks[taskId]) {
-            window.open(taskLinks[taskId], '_blank');
-        }
-        
-        // Simuler une vérification (l'utilisateur doit cliquer sur le bouton après avoir fait l'action)
-        btn.textContent = '🔄 Verifying...';
-        btn.disabled = true;
-        
-        setTimeout(() => {
-            task.done = true;
-            btn.textContent = '✅ Done';
-            btn.classList.add('done');
-            status.textContent = '●';
-            status.className = 'task-status done';
-            item.classList.add('done');
-            btn.disabled = false;
-            
-            updateProgress();
-            
-            // Toast de succès
-            showToast('✅ Task completed: ' + task.name, 'success');
-            
-        }, 1500);
-    }
+    watchBtn.addEventListener('click', startTimer);
     
     // ============================================================
-    // 2. KEY GENERATION
+    // 2. GÉNÉRATION DE CLÉ
     // ============================================================
     
     function generateKey() {
@@ -644,118 +197,50 @@
             if (i > 0 && i % 4 === 0) key += '-';
             key += chars[Math.floor(Math.random() * chars.length)];
         }
-        document.getElementById('keyDisplay').value = key;
+        return key;
     }
     
-    // ============================================================
-    // 3. COPY BUTTON
-    // ============================================================
-    
-    const copyBtn = document.getElementById('copyBtn');
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
-    
-    function showToast(message, type = 'success') {
-        toast.className = 'toast show toast-' + type;
-        toastMessage.textContent = message;
+    function generateAndShowKey() {
+        const key = generateKey();
+        keyDisplay.value = key;
+        keyContainer.classList.add('show');
         
+        // Animation bonus
+        keyDisplay.style.animation = 'none';
         setTimeout(() => {
-            toast.className = 'toast';
-        }, 2500);
+            keyDisplay.style.animation = 'fadeIn 0.5s ease';
+        }, 10);
     }
     
-    copyBtn.addEventListener('click', function() {
-        const key = document.getElementById('keyDisplay').value;
-        
+    // ============================================================
+    // 3. COPIE
+    // ============================================================
+    
+    document.getElementById('copyBtn').addEventListener('click', function() {
+        const key = keyDisplay.value;
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(key).then(() => {
-                showToast('✅ Key copied to clipboard!', 'success');
-                
-                // Animation
-                copyBtn.innerHTML = '✅ Copied!';
-                copyBtn.style.background = 'linear-gradient(135deg, #70de9d, #4a9e6a)';
-                
+                this.textContent = '✅ Copié !';
+                this.style.background = 'linear-gradient(135deg, #70de9d, #4a9e6a)';
                 setTimeout(() => {
-                    copyBtn.innerHTML = '📋 Copy Key';
-                    copyBtn.style.background = '';
+                    this.textContent = '📋 Copier la clé';
+                    this.style.background = '';
                 }, 2000);
-            }).catch(() => fallbackCopy(key));
+            });
         } else {
-            fallbackCopy(key);
+            // Fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = key;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            this.textContent = '✅ Copié !';
+            setTimeout(() => {
+                this.textContent = '📋 Copier la clé';
+            }, 2000);
         }
     });
-    
-    function fallbackCopy(text) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        
-        try {
-            document.execCommand('copy');
-            showToast('✅ Key copied to clipboard!', 'success');
-        } catch (err) {
-            showToast('❌ Failed to copy. Please copy manually.', 'error');
-        }
-        
-        document.body.removeChild(textarea);
-    }
-    
-    // ============================================================
-    // 4. FALLING PETALS
-    // ============================================================
-    
-    function createPetal() {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
-        petal.style.left = Math.random() * 100 + '%';
-        petal.style.width = (8 + Math.random() * 10) + 'px';
-        petal.style.height = (6 + Math.random() * 8) + 'px';
-        petal.style.animationDuration = (8 + Math.random() * 12) + 's';
-        petal.style.animationDelay = (Math.random() * 5) + 's';
-        petal.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
-        petal.style.opacity = 0.2 + Math.random() * 0.3;
-        document.body.appendChild(petal);
-        
-        setTimeout(() => petal.remove(), 20000);
-    }
-    
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => createPetal(), i * 200);
-    }
-    
-    setInterval(() => {
-        if (Math.random() < 0.3) createPetal();
-    }, 2000);
-    
-    // ============================================================
-    // 5. GLOW ANIMATION
-    // ============================================================
-    
-    function animateGlow() {
-        const orbs = document.querySelectorAll('.glow-orb');
-        orbs.forEach((orb, index) => {
-            const x = Math.sin(Date.now() / 3000 + index * 2) * 30;
-            const y = Math.cos(Date.now() / 4000 + index * 2) * 30;
-            orb.style.transform = `translate(${x}px, ${y}px) scale(${1 + Math.sin(Date.now() / 5000 + index) * 0.05})`;
-        });
-        requestAnimationFrame(animateGlow);
-    }
-    animateGlow();
-    
-    // ============================================================
-    // 6. INIT
-    // ============================================================
-    
-    // Générer une clé aléatoire au chargement (mais elle restera cachée)
-    generateKey();
-    
-    console.log('🌸 00xy Sakura - Key System loaded');
-    console.log('📋 Complete all tasks to unlock your key!');
-    
-    // Rendre les boutons "Verify" cliquables (déjà via onclick)
 </script>
 </body>
 </html>
