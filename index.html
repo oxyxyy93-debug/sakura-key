@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08070b">
-
 <title>00xy Sakura — Official</title>
 
 <style>
@@ -13,17 +11,11 @@
 
 :root {
     --bg: #08070b;
-    --bg2: #0d0a10;
-    --card: rgba(255,255,255,.035);
-    --border: rgba(255,255,255,.07);
-
     --pink: #f489be;
     --pink-light: #ffc7dc;
-    --purple: #9b4974;
-
-    --white: #fff;
     --text: #eee8ed;
     --muted: #918691;
+    --border: rgba(255,255,255,.07);
 }
 
 * {
@@ -38,39 +30,13 @@ html {
 
 body {
     min-height: 100vh;
-
     background:
-        radial-gradient(
-            circle at 50% -15%,
-            rgba(244,137,190,.15),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 0% 50%,
-            rgba(155,73,116,.08),
-            transparent 28%
-        ),
+        radial-gradient(circle at 50% -15%, rgba(244,137,190,.15), transparent 32%),
+        radial-gradient(circle at 0% 50%, rgba(155,73,116,.08), transparent 28%),
         var(--bg);
-
     color: var(--text);
-
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
     overflow-x: hidden;
-}
-
-
-/* =========================
-   GLOBAL
-========================= */
-
-.container {
-    width: min(1120px, calc(100% - 40px));
-    margin: auto;
 }
 
 a {
@@ -78,88 +44,56 @@ a {
     text-decoration: none;
 }
 
-button {
-    font-family: inherit;
+.container {
+    width: min(1120px, calc(100% - 40px));
+    margin: auto;
 }
 
 .gradient {
-    background:
-        linear-gradient(
-            135deg,
-            #f489be,
-            #ffc7dc
-        );
-
+    background: linear-gradient(135deg, #f489be, #ffc7dc);
     -webkit-background-clip: text;
     background-clip: text;
-
     color: transparent;
 }
 
-
-/* =========================
-   BACKGROUND
-========================= */
-
 .glow {
     position: fixed;
-
     width: 350px;
     height: 350px;
-
     border-radius: 50%;
-
     filter: blur(120px);
-
     pointer-events: none;
-
     opacity: .08;
-
     z-index: -1;
 }
 
 .glow.one {
     top: -180px;
     left: -150px;
-
     background: var(--pink);
 }
 
 .glow.two {
     right: -150px;
     bottom: -150px;
-
     background: #8b3f68;
 }
 
-
-/* =========================
-   NAVBAR
-========================= */
+/* NAVBAR */
 
 .navbar {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
-
     z-index: 1000;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.04);
-
-    background:
-        rgba(8,7,11,.72);
-
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    background: rgba(8,7,11,.75);
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
 }
 
 .nav-inner {
     height: 72px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -169,32 +103,24 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-
     font-weight: 800;
     font-size: 15px;
+}
+
+.logo span {
+    color: var(--pink);
 }
 
 .logo-icon {
     width: 36px;
     height: 36px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 11px;
-
-    background:
-        rgba(244,137,190,.08);
-
-    border:
-        1px solid rgba(244,137,190,.14);
-
+    background: rgba(244,137,190,.08);
+    border: 1px solid rgba(244,137,190,.14);
     font-size: 19px;
-}
-
-.logo span {
-    color: var(--pink);
 }
 
 .nav-links {
@@ -205,59 +131,35 @@ button {
 
 .nav-links a {
     padding: 9px 13px;
-
     color: var(--muted);
-
     font-size: 12px;
     font-weight: 600;
-
     border-radius: 9px;
-
     transition: .2s;
 }
 
 .nav-links a:hover {
     color: white;
-
-    background:
-        rgba(255,255,255,.045);
+    background: rgba(255,255,255,.045);
 }
 
 .nav-button {
-    padding: 10px 16px !important;
-
     color: white !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8f426c,
-            #f489be
-        );
-
-    box-shadow:
-        0 7px 25px rgba(244,137,190,.12);
+    background: linear-gradient(135deg, #8f426c, #f489be);
+    box-shadow: 0 7px 25px rgba(244,137,190,.12);
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     min-height: 850px;
-
     display: flex;
     align-items: center;
-
     padding-top: 72px;
-
-    position: relative;
 }
 
 .hero-content {
     width: 100%;
-
     text-align: center;
 }
 
@@ -265,61 +167,38 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-
     margin-bottom: 24px;
     padding: 8px 13px;
-
     color: var(--pink-light);
-
     font-size: 10px;
     font-weight: 600;
-
-    background:
-        rgba(244,137,190,.055);
-
-    border:
-        1px solid rgba(244,137,190,.12);
-
+    background: rgba(244,137,190,.055);
+    border: 1px solid rgba(244,137,190,.12);
     border-radius: 99px;
 }
 
 .announcement-dot {
     width: 6px;
     height: 6px;
-
     border-radius: 50%;
-
     background: #70de9d;
-
-    box-shadow:
-        0 0 12px rgba(112,222,157,.8);
+    box-shadow: 0 0 12px rgba(112,222,157,.8);
 }
 
 .hero h1 {
     max-width: 850px;
-
     margin: auto;
-
-    font-size:
-        clamp(48px, 8vw, 88px);
-
+    font-size: clamp(48px, 8vw, 88px);
     line-height: .98;
-
     letter-spacing: -5px;
-
     font-weight: 800;
 }
 
 .hero-description {
     max-width: 620px;
-
-    margin:
-        27px auto 0;
-
+    margin: 27px auto 0;
     color: var(--muted);
-
     font-size: 14px;
-
     line-height: 1.8;
 }
 
@@ -327,7 +206,6 @@ button {
     display: flex;
     justify-content: center;
     gap: 10px;
-
     margin-top: 34px;
 }
 
@@ -335,101 +213,55 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-
     min-height: 44px;
-
     padding: 0 19px;
-
     border-radius: 11px;
-
     font-size: 12px;
     font-weight: 700;
-
-    transition:
-        transform .2s,
-        box-shadow .2s,
-        background .2s;
+    transition: .2s;
 }
 
 .btn-primary {
     color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8f426c,
-            #f489be
-        );
-
-    box-shadow:
-        0 12px 35px rgba(244,137,190,.14);
+    background: linear-gradient(135deg, #8f426c, #f489be);
+    box-shadow: 0 12px 35px rgba(244,137,190,.14);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-
-    box-shadow:
-        0 18px 40px rgba(244,137,190,.24);
+    box-shadow: 0 18px 40px rgba(244,137,190,.24);
 }
 
 .btn-secondary {
-    border:
-        1px solid var(--border);
-
-    background:
-        rgba(255,255,255,.035);
-
-    color: var(--text);
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.035);
 }
 
 .btn-secondary:hover {
     transform: translateY(-3px);
-
-    background:
-        rgba(255,255,255,.06);
+    background: rgba(255,255,255,.06);
 }
 
-
-/* Hero visual */
+/* HERO CARD */
 
 .hero-visual {
-    position: relative;
-
     width: min(720px, 100%);
-
     margin: 80px auto 0;
-
     height: 180px;
 }
 
 .hero-card {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
     width: 420px;
-
+    margin: auto;
     padding: 20px;
-
     border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5);
-
-    backdrop-filter: blur(20px);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+    );
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
 }
 
 .mini-top {
@@ -450,45 +282,29 @@ button {
 
 .mini-line {
     height: 9px;
-
     margin-top: 15px;
-
     border-radius: 99px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #9b4974,
-            #f489be,
-            transparent
-        );
+    background: linear-gradient(
+        90deg,
+        #9b4974,
+        #f489be,
+        transparent
+    );
 }
 
-
-/* =========================
-   TRUST
-========================= */
+/* SECTIONS */
 
 .trust {
     padding: 25px 0 100px;
-
     text-align: center;
 }
 
 .trust p {
     color: #5e555d;
-
     font-size: 9px;
-
     text-transform: uppercase;
-
     letter-spacing: 2px;
 }
-
-
-/* =========================
-   SECTIONS
-========================= */
 
 .section {
     padding: 110px 0;
@@ -496,194 +312,102 @@ button {
 
 .section-header {
     max-width: 600px;
-
-    margin:
-        0 auto 55px;
-
+    margin: 0 auto 55px;
     text-align: center;
 }
 
 .eyebrow {
     color: var(--pink);
-
     font-size: 9px;
-
     font-weight: 700;
-
     letter-spacing: 2px;
-
     text-transform: uppercase;
 }
 
 .section-header h2 {
     margin-top: 10px;
-
     color: white;
-
-    font-size:
-        clamp(28px, 5vw, 42px);
-
+    font-size: clamp(28px, 5vw, 42px);
     letter-spacing: -1.5px;
 }
 
 .section-header p {
     margin-top: 14px;
-
     color: var(--muted);
-
     font-size: 12px;
-
     line-height: 1.7;
 }
 
+/* FEATURES */
 
-/* =========================
-   FEATURES
-========================= */
-
-.features {
+.features,
+.steps {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
-.feature {
+.feature,
+.step {
     padding: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-
-    border:
-        1px solid var(--border);
-
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+    );
+    border: 1px solid var(--border);
     border-radius: 18px;
-
     transition: .25s;
 }
 
 .feature:hover {
     transform: translateY(-6px);
-
-    border-color:
-        rgba(244,137,190,.17);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.2);
+    border-color: rgba(244,137,190,.17);
 }
 
 .feature-icon {
     width: 46px;
     height: 46px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 20px;
-
     border-radius: 13px;
-
-    background:
-        rgba(244,137,190,.07);
-
-    border:
-        1px solid rgba(244,137,190,.12);
-
+    background: rgba(244,137,190,.07);
+    border: 1px solid rgba(244,137,190,.12);
     font-size: 19px;
 }
 
-.feature h3 {
+.feature h3,
+.step h3 {
     font-size: 14px;
 }
 
-.feature p {
+.feature p,
+.step p {
     margin-top: 9px;
-
     color: var(--muted);
-
     font-size: 11px;
-
     line-height: 1.7;
-}
-
-
-/* =========================
-   HOW IT WORKS
-========================= */
-
-.steps {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-.step {
-    position: relative;
-
-    padding: 28px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 18px;
 }
 
 .step-number {
     color: var(--pink);
-
     font-size: 11px;
-
     font-weight: 800;
 }
 
 .step h3 {
     margin-top: 15px;
-
-    font-size: 15px;
 }
 
-.step p {
-    margin-top: 9px;
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================
-   CTA
-========================= */
+/* CTA */
 
 .cta {
-    position: relative;
-
-    overflow: hidden;
-
     padding: 70px 35px;
-
     text-align: center;
-
-    border:
-        1px solid rgba(244,137,190,.13);
-
+    border: 1px solid rgba(244,137,190,.13);
     border-radius: 24px;
-
     background:
         radial-gradient(
             circle at 50% 100%,
@@ -694,127 +418,82 @@ button {
 }
 
 .cta h2 {
-    font-size:
-        clamp(28px, 5vw, 42px);
-
-    letter-spacing: -1.5px;
+    font-size: clamp(28px, 5vw, 42px);
 }
 
 .cta p {
     max-width: 500px;
-
     margin: 13px auto 25px;
-
     color: var(--muted);
-
     font-size: 12px;
-
     line-height: 1.7;
 }
 
-
-/* =========================
-   FAQ
-========================= */
+/* FAQ */
 
 .faq {
     max-width: 700px;
-
     margin: auto;
 }
 
 .faq-item {
     margin-bottom: 9px;
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 13px;
-
     overflow: hidden;
-
-    background:
-        rgba(255,255,255,.025);
+    background: rgba(255,255,255,.025);
 }
 
 .faq-question {
     width: 100%;
-
     padding: 17px;
-
     display: flex;
     justify-content: space-between;
-
     border: 0;
-
     color: white;
-
     background: transparent;
-
     text-align: left;
-
     font-size: 11px;
     font-weight: 700;
-
     cursor: pointer;
 }
 
 .faq-question span {
     color: var(--pink);
-
     font-size: 15px;
-
     transition: .2s;
 }
 
 .faq-answer {
     max-height: 0;
-
     overflow: hidden;
-
-    transition:
-        max-height .3s ease;
+    transition: max-height .3s ease;
 }
 
 .faq-answer p {
-    padding:
-        0 17px 17px;
-
+    padding: 0 17px 17px;
     color: var(--muted);
-
     font-size: 10px;
-
     line-height: 1.7;
 }
 
-.faq-item.open
-.faq-answer {
+.faq-item.open .faq-answer {
     max-height: 150px;
 }
 
-.faq-item.open
-.faq-question span {
+.faq-item.open .faq-question span {
     transform: rotate(45deg);
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     margin-top: 70px;
-
-    border-top:
-        1px solid rgba(255,255,255,.045);
-
-    background:
-        rgba(0,0,0,.15);
+    border-top: 1px solid rgba(255,255,255,.045);
 }
 
 .footer-inner {
     min-height: 100px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -831,7 +510,6 @@ footer {
 
 .footer-copy {
     color: #5e555d;
-
     font-size: 9px;
 }
 
@@ -842,26 +520,19 @@ footer {
 
 .footer-links a {
     color: #756b73;
-
     font-size: 9px;
-
-    transition: .2s;
 }
 
 .footer-links a:hover {
     color: var(--pink);
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width: 750px) {
 
     .container {
-        width:
-            min(100% - 30px, 1120px);
+        width: min(100% - 30px, 1120px);
     }
 
     .nav-inner {
@@ -886,9 +557,7 @@ footer {
 
     .hero-buttons {
         flex-direction: column;
-
         width: 260px;
-
         margin-left: auto;
         margin-right: auto;
     }
@@ -912,21 +581,11 @@ footer {
 
     .footer-inner {
         padding: 25px 0;
-
         flex-direction: column;
-
         gap: 15px;
     }
 }
-
-@media(prefers-reduced-motion: reduce) {
-    * {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-    }
-}
 </style>
-
 </head>
 
 <body>
@@ -934,628 +593,331 @@ footer {
 <div class="glow one"></div>
 <div class="glow two"></div>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
 <header class="navbar">
+    <div class="container nav-inner">
 
-```
-<div class="container nav-inner">
-
-    <a href="#" class="logo">
-
-        <div class="logo-icon">
-            🌸
-        </div>
-
-        00xy <span>Sakura</span>
-
-    </a>
-
-    <nav class="nav-links">
-
-        <a href="#home">
-            Accueil
+        <a href="#home" class="logo">
+            <div class="logo-icon">🌸</div>
+            00xy <span>Sakura</span>
         </a>
 
-        <a href="#features">
-            Fonctionnalités
-        </a>
+        <nav class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#features">Fonctionnalités</a>
+            <a href="#how">Comment ça marche</a>
+            <a href="#faq">FAQ</a>
+            <a href="get-key.html" class="nav-button">Get Key</a>
+        </nav>
 
-        <a href="#how">
-            Comment ça marche
-        </a>
-
-        <a href="#faq">
-            FAQ
-        </a>
-
-        <a
-            href="#get-key"
-            class="nav-button">
-            Get Key
-        </a>
-
-    </nav>
-
-</div>
-```
-
+    </div>
 </header>
-
-<!-- =========================
-     HERO
-========================= -->
 
 <main id="home">
 
 <section class="hero">
+    <div class="container">
+        <div class="hero-content">
 
-```
-<div class="container">
+            <div class="announcement">
+                <span class="announcement-dot"></span>
+                00XY SAKURA · OFFICIAL
+            </div>
 
-    <div class="hero-content">
+            <h1>
+                Unlock your
+                <br>
+                <span class="gradient">Sakura experience.</span>
+            </h1>
 
-        <div class="announcement">
+            <p class="hero-description">
+                Bienvenue sur 00xy Sakura.
+                Une plateforme pensée pour offrir une
+                expérience simple, rapide et élégante.
+                Obtenez votre clé en quelques secondes.
+            </p>
 
-            <span class="announcement-dot"></span>
+            <div class="hero-buttons">
+                <a href="get-key.html" class="btn btn-primary">
+                    🔑 Obtenir ma clé
+                </a>
 
-            00XY SAKURA · OFFICIAL
+                <a href="#features" class="btn btn-secondary">
+                    Découvrir Sakura →
+                </a>
+            </div>
 
-        </div>
+            <div class="hero-visual">
+                <div class="hero-card">
 
+                    <div class="mini-top">
+                        <div class="mini-title">
+                            🌸 00xy Sakura
+                        </div>
 
-        <h1>
-
-            Unlock your
-            <br>
-
-            <span class="gradient">
-                Sakura experience.
-            </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-            Bienvenue sur 00xy Sakura.
-            Une plateforme pensée pour offrir une
-            expérience simple, rapide et élégante.
-            Obtenez votre clé en quelques secondes.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="#get-key"
-                class="btn btn-primary">
-
-                🔑 Obtenir ma clé
-
-            </a>
-
-
-            <a
-                href="#features"
-                class="btn btn-secondary">
-
-                Découvrir Sakura →
-
-            </a>
-
-        </div>
-
-
-        <div class="hero-visual">
-
-            <div class="hero-card">
-
-                <div class="mini-top">
-
-                    <div class="mini-title">
-                        🌸 00xy Sakura
+                        <div class="mini-status">
+                            ● ONLINE
+                        </div>
                     </div>
 
-                    <div class="mini-status">
-                        ● ONLINE
-                    </div>
+                    <div class="mini-line"></div>
 
                 </div>
-
-                <div class="mini-line"></div>
-
             </div>
 
         </div>
-
     </div>
-
-</div>
-```
-
 </section>
-
-<!-- =========================
-     TRUST
-========================= -->
 
 <section class="trust">
-
-```
-<div class="container">
-
-    <p>
-        Designed for a better experience
-    </p>
-
-</div>
-```
-
+    <div class="container">
+        <p>Designed for a better experience</p>
+    </div>
 </section>
 
-<!-- =========================
-     FEATURES
-========================= -->
+<section class="section" id="features">
+    <div class="container">
 
-<section
-    class="section"
-    id="features">
+        <div class="section-header">
+            <div class="eyebrow">Pourquoi Sakura</div>
 
-```
-<div class="container">
+            <h2>
+                Pensé pour être
+                <span class="gradient">simple.</span>
+            </h2>
 
-    <div class="section-header">
-
-        <div class="eyebrow">
-            Pourquoi Sakura
+            <p>
+                Une interface propre, une navigation fluide
+                et une expérience conçue pour fonctionner
+                aussi bien sur ordinateur que sur mobile.
+            </p>
         </div>
 
-        <h2>
-            Pensé pour être
-            <span class="gradient">
-                simple.
-            </span>
-        </h2>
+        <div class="features">
 
-        <p>
-            Une interface propre, une navigation fluide
-            et une expérience conçue pour fonctionner
-            aussi bien sur ordinateur que sur mobile.
-        </p>
+            <article class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Rapide</h3>
+                <p>
+                    Une expérience légère et rapide,
+                    sans interface inutile ou compliquée.
+                </p>
+            </article>
 
+            <article class="feature">
+                <div class="feature-icon">🔐</div>
+                <h3>Système de clés</h3>
+                <p>
+                    Une architecture prévue pour fonctionner
+                    avec un véritable système de clés côté serveur.
+                </p>
+            </article>
+
+            <article class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Responsive</h3>
+                <p>
+                    Le site s'adapte automatiquement aux
+                    smartphones, tablettes et ordinateurs.
+                </p>
+            </article>
+
+        </div>
     </div>
-
-
-    <div class="features">
-
-        <article class="feature">
-
-            <div class="feature-icon">
-                ⚡
-            </div>
-
-            <h3>
-                Rapide
-            </h3>
-
-            <p>
-                Une expérience légère et rapide,
-                sans interface inutile ou compliquée.
-            </p>
-
-        </article>
-
-
-        <article class="feature">
-
-            <div class="feature-icon">
-                🔐
-            </div>
-
-            <h3>
-                Système de clés
-            </h3>
-
-            <p>
-                Une architecture prévue pour fonctionner
-                avec un véritable système de clés côté serveur.
-            </p>
-
-        </article>
-
-
-        <article class="feature">
-
-            <div class="feature-icon">
-                📱
-            </div>
-
-            <h3>
-                Responsive
-            </h3>
-
-            <p>
-                Le site s'adapte automatiquement aux
-                smartphones, tablettes et ordinateurs.
-            </p>
-
-        </article>
-
-    </div>
-
-</div>
-```
-
 </section>
 
-<!-- =========================
-     HOW IT WORKS
-========================= -->
+<section class="section" id="how">
+    <div class="container">
 
-<section
-    class="section"
-    id="how">
+        <div class="section-header">
+            <div class="eyebrow">Le fonctionnement</div>
 
-```
-<div class="container">
+            <h2>Comment ça marche ?</h2>
 
-    <div class="section-header">
-
-        <div class="eyebrow">
-            Le fonctionnement
+            <p>
+                Trois étapes simples pour accéder à votre clé.
+            </p>
         </div>
 
-        <h2>
-            Comment ça marche ?
-        </h2>
+        <div class="steps">
 
-        <p>
-            Trois étapes simples pour accéder
-            à votre clé.
-        </p>
+            <article class="step">
+                <div class="step-number">01</div>
+                <h3>Commencez</h3>
+                <p>
+                    Cliquez sur le bouton « Get Key »
+                    pour commencer le processus.
+                </p>
+            </article>
 
+            <article class="step">
+                <div class="step-number">02</div>
+                <h3>Vérifiez</h3>
+                <p>
+                    Effectuez la vérification demandée
+                    afin de débloquer votre accès.
+                </p>
+            </article>
+
+            <article class="step">
+                <div class="step-number">03</div>
+                <h3>Récupérez votre clé</h3>
+                <p>
+                    Une fois la vérification terminée,
+                    votre clé est affichée.
+                </p>
+            </article>
+
+        </div>
     </div>
-
-
-    <div class="steps">
-
-        <article class="step">
-
-            <div class="step-number">
-                01
-            </div>
-
-            <h3>
-                Commencez
-            </h3>
-
-            <p>
-                Cliquez sur le bouton
-                « Get Key » pour commencer
-                le processus.
-            </p>
-
-        </article>
-
-
-        <article class="step">
-
-            <div class="step-number">
-                02
-            </div>
-
-            <h3>
-                Vérifiez
-            </h3>
-
-            <p>
-                Effectuez la vérification demandée
-                afin de débloquer votre accès.
-            </p>
-
-        </article>
-
-
-        <article class="step">
-
-            <div class="step-number">
-                03
-            </div>
-
-            <h3>
-                Récupérez votre clé
-            </h3>
-
-            <p>
-                Une fois la vérification terminée,
-                votre clé est affichée.
-            </p>
-
-        </article>
-
-    </div>
-
-</div>
-```
-
 </section>
 
-<!-- =========================
-     CTA
-========================= -->
+<section class="section" id="get-key">
+    <div class="container">
 
-<section
-    class="section"
-    id="get-key">
+        <div class="cta">
 
-```
-<div class="container">
+            <h2>Prêt à commencer ?</h2>
 
-    <div class="cta">
+            <p>
+                Accédez au système de récupération
+                et obtenez votre clé Sakura.
+            </p>
 
-        <h2>
-            Prêt à commencer ?
-        </h2>
+            <a href="get-key.html" class="btn btn-primary">
+                🔑 Get Your Key
+            </a>
 
-        <p>
-            Accédez au système de récupération
-            et obtenez votre clé Sakura.
-        </p>
-
-        <a
-            href="get-key.html"
-            class="btn btn-primary">
-
-            🔑 Get Your Key
-
-        </a>
+        </div>
 
     </div>
-
-</div>
-```
-
 </section>
 
-<!-- =========================
-     FAQ
-========================= -->
+<section class="section" id="faq">
+    <div class="container">
 
-<section
-    class="section"
-    id="faq">
-
-```
-<div class="container">
-
-    <div class="section-header">
-
-        <div class="eyebrow">
-            FAQ
+        <div class="section-header">
+            <div class="eyebrow">FAQ</div>
+            <h2>Questions fréquentes</h2>
         </div>
 
-        <h2>
-            Questions fréquentes
-        </h2>
+        <div class="faq">
 
+            <div class="faq-item">
+                <button class="faq-question">
+                    Qu'est-ce que 00xy Sakura ?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        00xy Sakura est une plateforme
+                        permettant d'accéder à un système
+                        de clés avec une interface simple
+                        et moderne.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Combien coûte la clé ?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Le système présenté ici est conçu
+                        comme une expérience gratuite.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Le site fonctionne-t-il sur mobile ?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Oui. L'interface est responsive et
+                        s'adapte aux différentes tailles d'écran.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Comment obtenir une clé ?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Cliquez sur « Get Your Key » puis
+                        suivez les étapes de vérification.
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-
-    <div class="faq">
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question">
-
-                Qu'est-ce que 00xy Sakura ?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    00xy Sakura est une plateforme
-                    permettant d'accéder à un système
-                    de clés avec une interface simple
-                    et moderne.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question">
-
-                Combien coûte la clé ?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    Le système présenté ici est conçu
-                    comme une expérience gratuite.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question">
-
-                Le site fonctionne-t-il sur mobile ?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    Oui. L'interface est responsive et
-                    s'adapte aux différentes tailles
-                    d'écran.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question">
-
-                Comment obtenir une clé ?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    Cliquez sur « Get Your Key » puis
-                    suivez les étapes de vérification.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
 </section>
 
 </main>
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
+    <div class="container footer-inner">
 
-```
-<div class="container footer-inner">
+        <div class="footer-brand">
+            🌸 00xy <span>Sakura</span>
+        </div>
 
-    <div class="footer-brand">
+        <div class="footer-copy">
+            © 2026 Sakura Studios. All rights reserved.
+        </div>
 
-        🌸 00xy
-        <span>Sakura</span>
-
-    </div>
-
-    <div class="footer-copy">
-
-        © 2026 Sakura Studios.
-        All rights reserved.
-
-    </div>
-
-    <div class="footer-links">
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#faq">
-            FAQ
-        </a>
-
-        <a href="#get-key">
-            Get Key
-        </a>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#faq">FAQ</a>
+            <a href="get-key.html">Get Key</a>
+        </div>
 
     </div>
-
-</div>
-```
-
 </footer>
 
 <script>
-
-/* =========================
-   FAQ ACCORDION
-========================= */
-
-const faqItems =
-    document.querySelectorAll(".faq-item");
+const faqItems = document.querySelectorAll(".faq-item");
 
 faqItems.forEach(item => {
 
-    const button =
-        item.querySelector(".faq-question");
+    const button = item.querySelector(".faq-question");
 
     button.addEventListener("click", () => {
 
-        const isOpen =
-            item.classList.contains("open");
-
+        const isOpen = item.classList.contains("open");
 
         faqItems.forEach(other => {
-
             other.classList.remove("open");
-
         });
 
-
         if (!isOpen) {
-
             item.classList.add("open");
-
         }
-
     });
-
 });
 
-
-/* =========================
-   NAVBAR SCROLL
-========================= */
-
-const navbar =
-    document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
 
     if (window.scrollY > 30) {
-
-        navbar.style.background =
-            "rgba(8,7,11,.9)";
-
+        navbar.style.background = "rgba(8,7,11,.95)";
     } else {
-
-        navbar.style.background =
-            "rgba(8,7,11,.72)";
-
+        navbar.style.background = "rgba(8,7,11,.75)";
     }
 
 });
-
 </script>
 
 </body>
