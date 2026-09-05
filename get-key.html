@@ -1,1 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08070b">
 
+<title>Get Your Key — 00xy Sakura</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #08070b;
+    --card: rgba(255,255,255,.045);
+    --border: rgba(255,255,255,.08);
+    --pink: #f489be;
+    --pink-light: #ffc7dc;
+    --text: #eee8ed;
+    --muted: #918691;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(244,137,190,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(155,73,116,.10),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.background-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: var(--pink);
+    filter: blur(140px);
+    opacity: .06;
+    pointer-events: none;
+}
+
+.card {
+    width: min(460px, 100%);
+    padding: 34px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.018)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    backdrop-filter: blur(20px);
+}
+
+.logo {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 17px;
+
+    background: rgba(244,137,190,.08);
+    border: 1px solid rgba(244,137,190,.15);
+
+    font-size: 28px;
+}
+
+h1 {
+    font-size: 27px;
+    letter-spacing: -1px;
+}
+
+.gradient {
+    background: linear-gradient(
+        135deg,
+        #f489be,
+        #ffc7dc
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.description {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.status {
+    margin-top: 25px;
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.status-title {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.timer {
+    margin-top: 9px;
+
+    color: var(--pink);
+
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.progress-container {
+    height: 8px;
+
+    margin-top: 14px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background: rgba(255,255,255,.06);
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+
+    border-radius: 99px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9b4974,
+            #f489be,
+            #ffc7dc
+        );
+
+    transition: width 1s linear;
+}
+
+.key-box {
+    display: none;
+
+    margin-top: 22px;
+}
+
+.key-label {
+    margin-bottom: 8px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.key {
+    padding: 15px;
+
+    color: var(--pink-light);
+
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    word-break: break-all;
+
+    border-radius: 12px;
+
+    background: rgba(244,137,190,.06);
+    border: 1px solid rgba(244,137,190,.15);
+}
+
+.copy {
+    width: 100%;
+
+    margin-top: 10px;
+    padding: 12px;
+
+    border: 0;
+    border-radius: 11px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8f426c,
+            #f489be
+        );
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.copy:hover {
+    transform: translateY(-2px);
+}
+
+.back {
+    display: inline-block;
+
+    margin-top: 24px;
+
+    color: #756b73;
+
+    font-size: 11px;
+
+    transition: .2s;
+}
+
+.back:hover {
+    color: var(--pink);
+}
+
+.note {
+    margin-top: 20px;
+
+    color: #5e555d;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+@media(max-width: 500px) {
+    .card {
+        padding: 27px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<div class="card">
+
+    <div class="logo">
+        🌸
+    </div>
+
+    <h1>
+        Get Your
+        <span class="gradient">Sakura Key</span>
+    </h1>
+
+    <p class="description">
+        Bienvenue sur 00xy Sakura.
+        Patiente quelques secondes pour générer
+        ta clé de démonstration.
+    </p>
+
+    <div class="status">
+
+        <div class="status-title">
+            Vérification en cours
+        </div>
+
+        <div class="timer" id="timer">
+            10
+        </div>
+
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+
+    </div>
+
+    <div class="key-box" id="keyBox">
+
+        <div class="key-label">
+            Ta clé
+        </div>
+
+        <div class="key" id="key">
+            -
+        </div>
+
+        <button class="copy" id="copyButton">
+            📋 Copier la clé
+        </button>
+
+    </div>
+
+    <a href="index.html" class="back">
+        ← Retour à l'accueil
+    </a>
+
+    <p class="note">
+        Démonstration frontend : les clés affichées ici
+        ne constituent pas un système sécurisé côté serveur.
+    </p>
+
+</div>
+
+<script>
+const keys = [
+    "SAKURA-2026",
+    "SAKURA2026",
+    "FREE-00XY",
+    "DEMO-KEY",
+    "X7K9-2P4M-8R3T",
+    "S1K2-A3R4-U5T6",
+    "P9R8-O7I6-U5Y4"
+];
+
+let seconds = 10;
+
+const timer = document.getElementById("timer");
+const progress = document.getElementById("progress");
+const keyBox = document.getElementById("keyBox");
+const keyElement = document.getElementById("key");
+const copyButton = document.getElementById("copyButton");
+
+const interval = setInterval(() => {
+
+    seconds--;
+
+    timer.textContent = seconds;
+
+    const percentage = ((10 - seconds) / 10) * 100;
+
+    progress.style.width = percentage + "%";
+
+    if (seconds <= 0) {
+
+        clearInterval(interval);
+
+        timer.textContent = "✓";
+
+        const randomKey =
+            keys[Math.floor(Math.random() * keys.length)];
+
+        keyElement.textContent = randomKey;
+
+        keyBox.style.display = "block";
+    }
+
+}, 1000);
+
+copyButton.addEventListener("click", async () => {
+
+    const key = keyElement.textContent;
+
+    try {
+
+        await navigator.clipboard.writeText(key);
+
+        copyButton.textContent = "✓ Clé copiée !";
+
+        setTimeout(() => {
+            copyButton.textContent = "📋 Copier la clé";
+        }, 2000);
+
+    } catch {
+
+        copyButton.textContent = "Copie impossible";
+
+        setTimeout(() => {
+            copyButton.textContent = "📋 Copier la clé";
+        }, 2000);
+    }
+
+});
+</script>
+
+</body>
+</html>
