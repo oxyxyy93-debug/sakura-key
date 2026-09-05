@@ -1,175 +1,660 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 00xy Sakura - Get Your Key</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta name="theme-color" content="#0a080d">
+    <title>🌸 00xy Sakura — Get Your Key</title>
+
+```
+<style>
+    :root {
+        --bg: #09070c;
+        --card: rgba(20, 15, 24, .82);
+        --card-border: rgba(244, 137, 190, .16);
+        --pink: #f489be;
+        --pink-light: #ffc2da;
+        --text: #f8f2f7;
+        --muted: #9d919b;
+        --green: #70de9d;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        min-height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+
+        font-family:
+            Inter,
+            "Segoe UI",
+            system-ui,
+            -apple-system,
+            sans-serif;
+
+        color: var(--text);
+        background:
+            radial-gradient(circle at 50% 0%, rgba(244,137,190,.13), transparent 35%),
+            radial-gradient(circle at 0% 100%, rgba(155,73,116,.10), transparent 30%),
+            var(--bg);
+
+        overflow-x: hidden;
+    }
+
+    /* Background glow */
+
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: .12;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    body::before {
+        background: #f489be;
+        top: -100px;
+        left: -100px;
+    }
+
+    body::after {
+        background: #8c4770;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    /* Main card */
+
+    .card {
+        position: relative;
+        width: min(100%, 470px);
+        padding: 42px 34px 28px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.035),
+                rgba(255,255,255,.012)
+            ),
+            var(--card);
+
+        border: 1px solid var(--card-border);
+        border-radius: 28px;
+
+        box-shadow:
+            0 35px 90px rgba(0,0,0,.65),
+            inset 0 1px rgba(255,255,255,.035);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        text-align: center;
+        overflow: hidden;
+
+        animation: cardIn .65s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes cardIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(.97);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Top decoration */
+
+    .top-line {
+        position: absolute;
+        top: 0;
+        left: 10%;
+        width: 80%;
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                var(--pink),
+                transparent
+            );
+
+        opacity: .7;
+    }
+
+    .logo {
+        width: 76px;
+        height: 76px;
+        margin: 0 auto 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 38px;
+
+        border-radius: 22px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(244,137,190,.16),
+                rgba(244,137,190,.035)
+            );
+
+        border: 1px solid rgba(244,137,190,.18);
+
+        box-shadow:
+            0 0 45px rgba(244,137,190,.10),
+            inset 0 1px rgba(255,255,255,.05);
+
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+
+    .title {
+        font-size: 27px;
+        font-weight: 850;
+        letter-spacing: -.7px;
+    }
+
+    .title span {
+        background: linear-gradient(
+            135deg,
+            #f489be,
+            #ffc2da
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subtitle {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    /* Verification */
+
+    .verify-box {
+        position: relative;
+        margin-top: 26px;
+        padding: 21px 18px;
+
+        border-radius: 18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.025),
+                rgba(255,255,255,.008)
+            );
+
+        border: 1px solid rgba(255,255,255,.055);
+    }
+
+    .video-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 11px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        background: rgba(255,70,70,.08);
+        border: 1px solid rgba(255,70,70,.12);
+
+        font-size: 22px;
+    }
+
+    .verify-title {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .verify-description {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* Timer */
+
+    .timer {
+        margin: 16px 0 12px;
+
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 32px;
+        font-weight: 800;
+
+        color: var(--pink-light);
+
+        text-shadow:
+            0 0 25px rgba(244,137,190,.25);
+    }
+
+    /* Progress */
+
+    .progress {
+        width: 100%;
+        height: 5px;
+        margin-bottom: 15px;
+
+        overflow: hidden;
+        border-radius: 99px;
+
+        background: rgba(255,255,255,.05);
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+
+        border-radius: inherit;
+
+        background:
+            linear-gradient(
+                90deg,
+                #9b4974,
+                #f489be,
+                #ffc2da
+            );
+
+        transition: width .25s linear;
+    }
+
+    /* Buttons */
+
+    button {
+        font-family: inherit;
+    }
+
+    .timer-btn,
+    .copy-btn {
+        width: 100%;
+        border: 0;
+        cursor: pointer;
+        transition:
+            transform .2s ease,
+            box-shadow .2s ease,
+            opacity .2s ease;
+    }
+
+    .timer-btn {
+        padding: 12px 18px;
+
+        color: white;
+        font-size: 12px;
+        font-weight: 750;
+
+        border-radius: 11px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,70,70,.16),
+                rgba(255,70,70,.08)
+            );
+
+        border: 1px solid rgba(255,70,70,.14);
+    }
+
+    .timer-btn:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255,70,70,.12);
+    }
+
+    .timer-btn:disabled {
+        opacity: .55;
+        cursor: not-allowed;
+    }
+
+    .timer-btn.done {
+        color: var(--green);
+        background: rgba(112,222,157,.08);
+        border-color: rgba(112,222,157,.14);
+    }
+
+    .status {
+        min-height: 18px;
+        margin-top: 11px;
+
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .status.done {
+        color: var(--green);
+    }
+
+    /* Key */
+
+    .key-container {
+        display: none;
+        margin-top: 18px;
+        padding: 20px;
+
+        border-radius: 18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(244,137,190,.07),
+                rgba(244,137,190,.025)
+            );
+
+        border: 1px solid rgba(244,137,190,.15);
+
+        animation: keyIn .5s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .key-container.show {
+        display: block;
+    }
+
+    @keyframes keyIn {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .key-label {
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .key-display {
+        width: 100%;
+        margin-top: 10px;
+        padding: 13px 8px;
+
+        color: #fff;
+        text-align: center;
+
+        font-family:
+            "SFMono-Regular",
+            Consolas,
+            monospace;
+
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: 2px;
+
+        background: rgba(0,0,0,.2);
+        border: 1px solid rgba(255,255,255,.05);
+        border-radius: 10px;
+
+        outline: none;
+    }
+
+    .copy-btn {
+        margin-top: 11px;
+        padding: 13px;
+
+        color: white;
+        font-size: 12px;
+        font-weight: 800;
+
+        border-radius: 11px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #8d426b,
+                #f489be
+            );
+
+        box-shadow:
+            0 8px 25px rgba(244,137,190,.12);
+    }
+
+    .copy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 12px 32px rgba(244,137,190,.22);
+    }
+
+    .copy-btn:active,
+    .timer-btn:active {
+        transform: scale(.98);
+    }
+
+    /* Footer */
+
+    .footer {
+        margin-top: 22px;
+        padding-top: 15px;
+
+        color: #594b56;
+        font-size: 9px;
+
+        border-top: 1px solid rgba(255,255,255,.035);
+    }
+
+    .footer span {
+        color: var(--pink);
+    }
+
+    /* Focus */
+
+    button:focus-visible,
+    input:focus-visible {
+        outline: 2px solid var(--pink);
+        outline-offset: 3px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 480px) {
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #0a0a0e;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
+
         .card {
-            background: linear-gradient(145deg, #101016, #16161a);
-            border: 1px solid rgba(244, 137, 190, 0.15);
-            border-radius: 24px;
-            padding: 40px 35px 35px;
-            max-width: 480px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            padding: 34px 20px 23px;
+            border-radius: 23px;
         }
-        .title { color: #f8f2f7; font-size: 24px; font-weight: 800; }
-        .title span { background: linear-gradient(135deg, #f489be, #ffb6c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { color: #a497a2; font-size: 12px; margin-top: 4px; }
-        
-        .youtube-section {
-            background: rgba(255,0,0,0.05);
-            border: 1px solid rgba(255,0,0,0.1);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
+
+        .title {
+            font-size: 24px;
         }
-        .timer { font-size: 28px; font-weight: 700; color: #ffb6c1; margin: 8px 0; }
-        .timer-btn {
-            background: rgba(255,0,0,0.15);
-            color: #ff6b6b;
-            border: 1px solid rgba(255,0,0,0.2);
-            border-radius: 8px;
-            padding: 8px 20px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+
+        .timer {
+            font-size: 29px;
         }
-        .timer-btn:hover:not(:disabled) { background: rgba(255,0,0,0.25); }
-        .timer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-        .timer-btn.done { background: rgba(112, 222, 157, 0.15); color: #70de9d; border-color: rgba(112, 222, 157, 0.2); }
-        
-        .key-container {
-            background: #0a0a0e;
-            border: 1px solid rgba(244, 137, 190, 0.2);
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin-top: 20px;
-            display: none;
-        }
-        .key-container.show { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
         .key-display {
-            color: #ffffff;
-            font-size: 26px;
-            font-weight: 700;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 4px;
-            background: transparent;
-            border: none;
-            width: 100%;
-            text-align: center;
-            outline: none;
+            font-size: 16px;
+            letter-spacing: 1.5px;
         }
-        .btn-copy {
-            background: linear-gradient(135deg, #9b4974, #f489be);
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 12px;
-            transition: all 0.3s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+            transition-duration: .01ms !important;
         }
-        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(244, 137, 190, 0.3); }
-        .footer { color: #4a3a47; font-size: 9px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 14px; }
-        .footer span { color: #f489be; }
-        .status { color: #a497a2; font-size: 12px; margin-top: 12px; }
-        .status.done { color: #70de9d; }
-    </style>
+    }
+</style>
+```
+
 </head>
+
 <body>
 
-<div class="card">
-    <div style="font-size:42px;">🌸</div>
-    <div class="title">00xy <span>Sakura</span></div>
-    <div class="subtitle">🔑 Générateur de clé gratuit</div>
-    
-    <div class="youtube-section">
-        <div style="font-size:32px;">📹</div>
-        <div style="color:#f8f2f7;font-size:14px;font-weight:600;margin:4px 0;">Regardez la vidéo</div>
-        <div style="color:#a497a2;font-size:11px;">Attendez 10 secondes pour débloquer votre clé</div>
-        <div class="timer" id="timerDisplay">0s</div>
-        <button class="timer-btn" id="watchBtn">▶ Regarder</button>
-        <div class="status" id="statusText">⏳ En attente...</div>
+<main class="card">
+
+```
+<div class="top-line"></div>
+
+<div class="logo">🌸</div>
+
+<h1 class="title">
+    00xy <span>Sakura</span>
+</h1>
+
+<p class="subtitle">
+    🔑 Générateur de clé gratuit
+</p>
+
+<section class="verify-box">
+
+    <div class="video-icon">📹</div>
+
+    <div class="verify-title">
+        Vérification rapide
     </div>
-    
-    <div class="key-container" id="keyContainer">
-        <div style="color:#a497a2;font-size:10px;text-transform:uppercase;letter-spacing:2px;">🔑 Votre clé</div>
-        <input type="text" class="key-display" id="keyDisplay" readonly>
-        <button class="btn-copy" id="copyBtn">📋 Copier la clé</button>
+
+    <div class="verify-description">
+        Regardez la vidéo pendant 10 secondes<br>
+        pour débloquer votre clé.
     </div>
-    
-    <div class="footer">©2026 <span>Sakura Studios</span> • All Rights Reserved</div>
-</div>
+
+    <div class="timer" id="timerDisplay">
+        0s
+    </div>
+
+    <div class="progress">
+        <div
+            class="progress-bar"
+            id="progressBar">
+        </div>
+    </div>
+
+    <button
+        class="timer-btn"
+        id="watchBtn">
+        ▶ Commencer
+    </button>
+
+    <div
+        class="status"
+        id="statusText"
+        aria-live="polite">
+        ⏳ En attente...
+    </div>
+
+</section>
+
+<section
+    class="key-container"
+    id="keyContainer">
+
+    <div class="key-label">
+        🔑 Votre clé
+    </div>
+
+    <input
+        type="text"
+        class="key-display"
+        id="keyDisplay"
+        readonly
+        aria-label="Votre clé">
+
+    <button
+        class="copy-btn"
+        id="copyBtn">
+        📋 Copier la clé
+    </button>
+
+</section>
+
+<footer class="footer">
+    © 2026 <span>Sakura Studios</span> • All Rights Reserved
+</footer>
+```
+
+</main>
 
 <script>
-    // ============================================================
-    // 1. FAUSSE VÉRIFICATION (timer 10s)
-    // ============================================================
-    
-    let isWatching = false;
-    let timeLeft = 0;
-    const requiredTime = 10;
-    let timerInterval = null;
-    let isVerified = false;
-    
-    const timerDisplay = document.getElementById('timerDisplay');
-    const watchBtn = document.getElementById('watchBtn');
-    const statusText = document.getElementById('statusText');
-    const keyContainer = document.getElementById('keyContainer');
-    const keyDisplay = document.getElementById('keyDisplay');
-    
-    function startTimer() {
-        if (isWatching) return;
-        isWatching = true;
-        timeLeft = 0;
-        watchBtn.textContent = '⏳ Regardez...';
-        watchBtn.disabled = true;
-        statusText.textContent = '📹 Regardez la vidéo...';
-        statusText.className = 'status';
-        
-        timerInterval = setInterval(() => {
-            timeLeft++;
-            timerDisplay.textContent = timeLeft + 's';
-            
-            if (timeLeft >= requiredTime) {
-                clearInterval(timerInterval);
-                isWatching = false;
-                isVerified = true;
-                watchBtn.textContent = '✅ Vérifié !';
-                watchBtn.className = 'timer-btn done';
-                statusText.textContent = '✅ Vidéo regardée ! Clé débloquée !';
-                statusText.className = 'status done';
-                
-                generateAndShowKey();
-            }
-        }, 1000);
-    }
-    
-    watchBtn.addEventListener('click', startTimer);
-    
-    // ============================================================
-    // 2. GÉNÉRATION DE CLÉ (valeurs prédéfinies)
-    // ============================================================
-    
-    // ⚠️ Ces clés doivent être IDENTIQUES dans l'UI Roblox
+    "use strict";
+
+    const REQUIRED_TIME = 10;
+
+    let elapsed = 0;
+    let timer = null;
+    let verified = false;
+
+    const timerDisplay =
+        document.getElementById("timerDisplay");
+
+    const watchBtn =
+        document.getElementById("watchBtn");
+
+    const statusText =
+        document.getElementById("statusText");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const keyContainer =
+        document.getElementById("keyContainer");
+
+    const keyDisplay =
+        document.getElementById("keyDisplay");
+
+    const copyBtn =
+        document.getElementById("copyBtn");
+
+
+    /*
+     * IMPORTANT :
+     * Une clé présente uniquement dans le JavaScript
+     * n'est pas une vraie sécurité.
+     *
+     * Pour un vrai système de clés, la génération/
+     * validation doit être faite côté serveur.
+     */
+
     const VALID_KEYS = [
         "SAKURA-2026",
         "SAKURA2026",
@@ -180,66 +665,149 @@
         "S1K2-A3R4-U5T6",
         "P9R8-O7I6-U5Y4"
     ];
-    
+
+
     function getRandomKey() {
-        return VALID_KEYS[Math.floor(Math.random() * VALID_KEYS.length)];
+        const index =
+            Math.floor(Math.random() * VALID_KEYS.length);
+
+        return VALID_KEYS[index];
     }
-    
-    function generateAndShowKey() {
-        const key = getRandomKey();
-        keyDisplay.value = key;
-        keyContainer.classList.add('show');
-        
-        // Ajouter la clé dans l'URL pour référence
-        const url = new URL(window.location);
-        url.searchParams.set('key', key);
-        window.history.pushState({}, '', url);
+
+
+    function updateProgress() {
+
+        const percentage =
+            Math.min(
+                (elapsed / REQUIRED_TIME) * 100,
+                100
+            );
+
+        timerDisplay.textContent =
+            `${elapsed}s`;
+
+        progressBar.style.width =
+            `${percentage}%`;
     }
-    
-    // ============================================================
-    // 3. COPIE
-    // ============================================================
-    
-    document.getElementById('copyBtn').addEventListener('click', function() {
-        const key = keyDisplay.value;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(key).then(() => {
-                this.textContent = '✅ Copié !';
-                this.style.background = 'linear-gradient(135deg, #70de9d, #4a9e6a)';
-                setTimeout(() => {
-                    this.textContent = '📋 Copier la clé';
-                    this.style.background = '';
-                }, 2000);
-            });
-        } else {
-            // Fallback
-            const textarea = document.createElement('textarea');
-            textarea.value = key;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            this.textContent = '✅ Copié !';
-            setTimeout(() => {
-                this.textContent = '📋 Copier la clé';
-            }, 2000);
+
+
+    function startTimer() {
+
+        if (timer || verified) {
+            return;
         }
-    });
-    
-    // ============================================================
-    // 4. RÉCUPÉRER LA CLÉ DEPUIS L'URL
-    // ============================================================
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlKey = urlParams.get('key');
-    if (urlKey && VALID_KEYS.includes(urlKey)) {
-        keyDisplay.value = urlKey;
-        keyContainer.classList.add('show');
-        document.getElementById('statusText').textContent = '✅ Clé chargée depuis l\'URL !';
-        document.getElementById('statusText').className = 'status done';
-        document.getElementById('watchBtn').className = 'timer-btn done';
-        document.getElementById('watchBtn').textContent = '✅ Vérifié !';
+
+        elapsed = 0;
+        updateProgress();
+
+        watchBtn.disabled = true;
+        watchBtn.textContent = "⏳ Vérification...";
+
+        statusText.textContent =
+            "📹 Vérification en cours...";
+
+        statusText.className = "status";
+
+        timer = setInterval(() => {
+
+            elapsed++;
+
+            updateProgress();
+
+            if (elapsed >= REQUIRED_TIME) {
+
+                clearInterval(timer);
+                timer = null;
+
+                completeVerification();
+            }
+
+        }, 1000);
     }
+
+
+    function completeVerification() {
+
+        verified = true;
+
+        watchBtn.disabled = true;
+        watchBtn.textContent = "✓ Vérifié";
+        watchBtn.className = "timer-btn done";
+
+        statusText.textContent =
+            "✓ Vérification terminée — clé débloquée !";
+
+        statusText.className = "status done";
+
+        generateKey();
+    }
+
+
+    function generateKey() {
+
+        const key = getRandomKey();
+
+        keyDisplay.value = key;
+
+        keyContainer.classList.add("show");
+
+        /*
+         * On ne place volontairement PAS la clé
+         * dans l'URL : sinon n'importe qui peut
+         * modifier ?key=... manuellement.
+         */
+    }
+
+
+    watchBtn.addEventListener(
+        "click",
+        startTimer
+    );
+
+
+    copyBtn.addEventListener(
+        "click",
+        async () => {
+
+            const key = keyDisplay.value;
+
+            if (!key) {
+                return;
+            }
+
+            try {
+
+                await navigator.clipboard.writeText(key);
+
+                copyBtn.textContent =
+                    "✓ Clé copiée !";
+
+                setTimeout(() => {
+
+                    copyBtn.textContent =
+                        "📋 Copier la clé";
+
+                }, 2000);
+
+            } catch {
+
+                keyDisplay.select();
+
+                document.execCommand("copy");
+
+                copyBtn.textContent =
+                    "✓ Clé copiée !";
+
+                setTimeout(() => {
+
+                    copyBtn.textContent =
+                        "📋 Copier la clé";
+
+                }, 2000);
+            }
+        }
+    );
 </script>
+
 </body>
 </html>
