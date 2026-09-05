@@ -2,811 +2,500 @@
 
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a080d">
-    <title>🌸 00xy Sakura — Get Your Key</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
+<title>00xy Sakura — Get Key</title>
+
 <style>
-    :root {
-        --bg: #09070c;
-        --card: rgba(20, 15, 24, .82);
-        --card-border: rgba(244, 137, 190, .16);
-        --pink: #f489be;
-        --pink-light: #ffc2da;
-        --text: #f8f2f7;
-        --muted: #9d919b;
-        --green: #70de9d;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+body {
+    min-height: 100vh;
 
-    html {
-        min-height: 100%;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    body {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
+    padding: 20px;
 
-        font-family:
-            Inter,
-            "Segoe UI",
-            system-ui,
-            -apple-system,
-            sans-serif;
+    font-family:
+        Inter,
+        "Segoe UI",
+        sans-serif;
 
-        color: var(--text);
-        background:
-            radial-gradient(circle at 50% 0%, rgba(244,137,190,.13), transparent 35%),
-            radial-gradient(circle at 0% 100%, rgba(155,73,116,.10), transparent 30%),
-            var(--bg);
+    color: #f8f2f7;
 
-        overflow-x: hidden;
-    }
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(244,137,190,.16),
+            transparent 40%
+        ),
+        #09070c;
+}
 
-    /* Background glow */
+.card {
+    width: min(100%, 450px);
 
-    body::before,
-    body::after {
-        content: "";
-        position: fixed;
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-        filter: blur(90px);
-        opacity: .12;
-        pointer-events: none;
-        z-index: -1;
-    }
+    padding: 34px 25px;
 
-    body::before {
-        background: #f489be;
-        top: -100px;
-        left: -100px;
-    }
+    text-align: center;
 
-    body::after {
-        background: #8c4770;
-        bottom: -100px;
-        right: -100px;
-    }
+    background: rgba(20,15,24,.82);
 
-    /* Main card */
+    border: 1px solid rgba(244,137,190,.14);
+    border-radius: 24px;
 
-    .card {
-        position: relative;
-        width: min(100%, 470px);
-        padding: 42px 34px 28px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65);
 
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.035),
-                rgba(255,255,255,.012)
-            ),
-            var(--card);
+    backdrop-filter: blur(18px);
+}
 
-        border: 1px solid var(--card-border);
-        border-radius: 28px;
+.logo {
+    width: 70px;
+    height: 70px;
 
-        box-shadow:
-            0 35px 90px rgba(0,0,0,.65),
-            inset 0 1px rgba(255,255,255,.035);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+    margin: 0 auto 15px;
 
-        text-align: center;
-        overflow: hidden;
+    font-size: 34px;
 
-        animation: cardIn .65s cubic-bezier(.2,.8,.2,1);
-    }
+    border-radius: 20px;
 
-    @keyframes cardIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px) scale(.97);
-        }
+    background: rgba(244,137,190,.08);
+    border: 1px solid rgba(244,137,190,.13);
+}
 
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
+h1 {
+    font-size: 25px;
+}
 
-    /* Top decoration */
+h1 span {
+    color: #f489be;
+}
 
-    .top-line {
-        position: absolute;
-        top: 0;
-        left: 10%;
-        width: 80%;
-        height: 1px;
+.subtitle {
+    margin-top: 7px;
+    color: #9d919b;
+    font-size: 11px;
+}
 
-        background:
-            linear-gradient(
-                90deg,
-                transparent,
-                var(--pink),
-                transparent
-            );
+.verify {
+    margin-top: 25px;
+    padding: 20px;
 
-        opacity: .7;
-    }
+    background: rgba(255,255,255,.025);
 
-    .logo {
-        width: 76px;
-        height: 76px;
-        margin: 0 auto 15px;
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 17px;
+}
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.icon {
+    font-size: 27px;
+}
 
-        font-size: 38px;
+h2 {
+    margin-top: 8px;
+    font-size: 14px;
+}
 
-        border-radius: 22px;
+.description {
+    margin-top: 6px;
+    color: #9d919b;
+    font-size: 10px;
+    line-height: 1.5;
+}
 
-        background:
-            linear-gradient(
-                145deg,
-                rgba(244,137,190,.16),
-                rgba(244,137,190,.035)
-            );
+.timer {
+    margin: 17px 0;
 
-        border: 1px solid rgba(244,137,190,.18);
+    color: #ffc2da;
 
-        box-shadow:
-            0 0 45px rgba(244,137,190,.10),
-            inset 0 1px rgba(255,255,255,.05);
+    font-family: monospace;
+    font-size: 31px;
+    font-weight: 800;
+}
 
-        animation: float 4s ease-in-out infinite;
-    }
+.progress {
+    height: 5px;
+    overflow: hidden;
 
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
+    margin-bottom: 15px;
 
-        50% {
-            transform: translateY(-5px);
-        }
-    }
+    background: rgba(255,255,255,.05);
+    border-radius: 99px;
+}
 
-    .title {
-        font-size: 27px;
-        font-weight: 850;
-        letter-spacing: -.7px;
-    }
+.progress-bar {
+    width: 0%;
+    height: 100%;
 
-    .title span {
-        background: linear-gradient(
-            135deg,
+    background:
+        linear-gradient(
+            90deg,
+            #9b4974,
             #f489be,
             #ffc2da
         );
 
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+    transition: width .25s linear;
+}
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    border: 0;
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d426b,
+            #f489be
+        );
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(244,137,190,.2);
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.status {
+    min-height: 18px;
+    margin-top: 11px;
+
+    color: #9d919b;
+    font-size: 10px;
+}
+
+.done {
+    color: #70de9d;
+}
+
+.key {
+    display: none;
+
+    margin-top: 15px;
+    padding: 18px;
+
+    border-radius: 17px;
+
+    background: rgba(244,137,190,.05);
+    border: 1px solid rgba(244,137,190,.13);
+}
+
+.key.show {
+    display: block;
+    animation: show .45s ease;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
 
-    .subtitle {
-        margin-top: 7px;
-        color: var(--muted);
-        font-size: 12px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    /* Verification */
+.label {
+    color: #9d919b;
 
-    .verify-box {
-        position: relative;
-        margin-top: 26px;
-        padding: 21px 18px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-        border-radius: 18px;
+.key-value {
+    margin-top: 10px;
+    padding: 13px 7px;
 
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.025),
-                rgba(255,255,255,.008)
-            );
+    color: white;
 
-        border: 1px solid rgba(255,255,255,.055);
-    }
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2px;
 
-    .video-icon {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto 11px;
+    background: rgba(0,0,0,.25);
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 9px;
+}
 
-        border-radius: 14px;
+.copy {
+    margin-top: 10px;
+}
 
-        background: rgba(255,70,70,.08);
-        border: 1px solid rgba(255,70,70,.12);
+.back {
+    display: inline-block;
 
-        font-size: 22px;
-    }
+    margin-top: 20px;
 
-    .verify-title {
-        font-size: 14px;
-        font-weight: 700;
-    }
+    color: #9d919b;
+    text-decoration: none;
+    font-size: 10px;
+}
 
-    .verify-description {
-        margin-top: 5px;
-        color: var(--muted);
-        font-size: 11px;
-        line-height: 1.5;
-    }
-
-    /* Timer */
-
-    .timer {
-        margin: 16px 0 12px;
-
-        font-family: "SFMono-Regular", Consolas, monospace;
-        font-size: 32px;
-        font-weight: 800;
-
-        color: var(--pink-light);
-
-        text-shadow:
-            0 0 25px rgba(244,137,190,.25);
-    }
-
-    /* Progress */
-
-    .progress {
-        width: 100%;
-        height: 5px;
-        margin-bottom: 15px;
-
-        overflow: hidden;
-        border-radius: 99px;
-
-        background: rgba(255,255,255,.05);
-    }
-
-    .progress-bar {
-        width: 0%;
-        height: 100%;
-
-        border-radius: inherit;
-
-        background:
-            linear-gradient(
-                90deg,
-                #9b4974,
-                #f489be,
-                #ffc2da
-            );
-
-        transition: width .25s linear;
-    }
-
-    /* Buttons */
-
-    button {
-        font-family: inherit;
-    }
-
-    .timer-btn,
-    .copy-btn {
-        width: 100%;
-        border: 0;
-        cursor: pointer;
-        transition:
-            transform .2s ease,
-            box-shadow .2s ease,
-            opacity .2s ease;
-    }
-
-    .timer-btn {
-        padding: 12px 18px;
-
-        color: white;
-        font-size: 12px;
-        font-weight: 750;
-
-        border-radius: 11px;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,70,70,.16),
-                rgba(255,70,70,.08)
-            );
-
-        border: 1px solid rgba(255,70,70,.14);
-    }
-
-    .timer-btn:not(:disabled):hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(255,70,70,.12);
-    }
-
-    .timer-btn:disabled {
-        opacity: .55;
-        cursor: not-allowed;
-    }
-
-    .timer-btn.done {
-        color: var(--green);
-        background: rgba(112,222,157,.08);
-        border-color: rgba(112,222,157,.14);
-    }
-
-    .status {
-        min-height: 18px;
-        margin-top: 11px;
-
-        color: var(--muted);
-        font-size: 11px;
-    }
-
-    .status.done {
-        color: var(--green);
-    }
-
-    /* Key */
-
-    .key-container {
-        display: none;
-        margin-top: 18px;
-        padding: 20px;
-
-        border-radius: 18px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(244,137,190,.07),
-                rgba(244,137,190,.025)
-            );
-
-        border: 1px solid rgba(244,137,190,.15);
-
-        animation: keyIn .5s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .key-container.show {
-        display: block;
-    }
-
-    @keyframes keyIn {
-        from {
-            opacity: 0;
-            transform: translateY(12px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .key-label {
-        color: var(--muted);
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-
-    .key-display {
-        width: 100%;
-        margin-top: 10px;
-        padding: 13px 8px;
-
-        color: #fff;
-        text-align: center;
-
-        font-family:
-            "SFMono-Regular",
-            Consolas,
-            monospace;
-
-        font-size: 19px;
-        font-weight: 800;
-        letter-spacing: 2px;
-
-        background: rgba(0,0,0,.2);
-        border: 1px solid rgba(255,255,255,.05);
-        border-radius: 10px;
-
-        outline: none;
-    }
-
-    .copy-btn {
-        margin-top: 11px;
-        padding: 13px;
-
-        color: white;
-        font-size: 12px;
-        font-weight: 800;
-
-        border-radius: 11px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #8d426b,
-                #f489be
-            );
-
-        box-shadow:
-            0 8px 25px rgba(244,137,190,.12);
-    }
-
-    .copy-btn:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 12px 32px rgba(244,137,190,.22);
-    }
-
-    .copy-btn:active,
-    .timer-btn:active {
-        transform: scale(.98);
-    }
-
-    /* Footer */
-
-    .footer {
-        margin-top: 22px;
-        padding-top: 15px;
-
-        color: #594b56;
-        font-size: 9px;
-
-        border-top: 1px solid rgba(255,255,255,.035);
-    }
-
-    .footer span {
-        color: var(--pink);
-    }
-
-    /* Focus */
-
-    button:focus-visible,
-    input:focus-visible {
-        outline: 2px solid var(--pink);
-        outline-offset: 3px;
-    }
-
-    /* Mobile */
-
-    @media (max-width: 480px) {
-        body {
-            padding: 15px;
-        }
-
-        .card {
-            padding: 34px 20px 23px;
-            border-radius: 23px;
-        }
-
-        .title {
-            font-size: 24px;
-        }
-
-        .timer {
-            font-size: 29px;
-        }
-
-        .key-display {
-            font-size: 16px;
-            letter-spacing: 1.5px;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-            animation-duration: .01ms !important;
-            animation-iteration-count: 1 !important;
-            scroll-behavior: auto !important;
-            transition-duration: .01ms !important;
-        }
-    }
+.back:hover {
+    color: #f489be;
+}
 </style>
-```
 
 </head>
 
 <body>
 
-<main class="card">
+<div class="card">
 
 ```
-<div class="top-line"></div>
-
 <div class="logo">🌸</div>
 
-<h1 class="title">
+<h1>
     00xy <span>Sakura</span>
 </h1>
 
 <p class="subtitle">
-    🔑 Générateur de clé gratuit
+    🔑 Obtenir votre clé
 </p>
 
-<section class="verify-box">
 
-    <div class="video-icon">📹</div>
+<div class="verify">
 
-    <div class="verify-title">
+    <div class="icon">📹</div>
+
+    <h2>
         Vérification rapide
-    </div>
+    </h2>
 
-    <div class="verify-description">
-        Regardez la vidéo pendant 10 secondes<br>
-        pour débloquer votre clé.
-    </div>
+    <p class="description">
+        Cliquez sur le bouton puis attendez
+        la fin de la vérification.
+    </p>
 
-    <div class="timer" id="timerDisplay">
+    <div class="timer" id="timer">
         0s
     </div>
 
     <div class="progress">
         <div
             class="progress-bar"
-            id="progressBar">
+            id="progress">
         </div>
     </div>
 
-    <button
-        class="timer-btn"
-        id="watchBtn">
+    <button id="start">
         ▶ Commencer
     </button>
 
     <div
         class="status"
-        id="statusText"
-        aria-live="polite">
+        id="status">
         ⏳ En attente...
     </div>
 
-</section>
+</div>
 
-<section
-    class="key-container"
-    id="keyContainer">
 
-    <div class="key-label">
-        🔑 Votre clé
+<div
+    class="key"
+    id="keyBox">
+
+    <div class="label">
+        Votre clé
     </div>
 
-    <input
-        type="text"
-        class="key-display"
-        id="keyDisplay"
-        readonly
-        aria-label="Votre clé">
+    <div
+        class="key-value"
+        id="key">
+    </div>
 
     <button
-        class="copy-btn"
-        id="copyBtn">
+        class="copy"
+        id="copy">
         📋 Copier la clé
     </button>
 
-</section>
+</div>
 
-<footer class="footer">
-    © 2026 <span>Sakura Studios</span> • All Rights Reserved
-</footer>
+
+<a href="index.html" class="back">
+    ← Retour à l'accueil
+</a>
 ```
 
-</main>
+</div>
 
 <script>
-    "use strict";
 
-    const REQUIRED_TIME = 10;
+const KEYS = [
+    "SAKURA-2026",
+    "SAKURA2026",
+    "ABCD-1234-EFGH",
+    "FREE-00XY",
+    "DEMO-KEY",
+    "X7K9-2P4M-8R3T"
+];
 
-    let elapsed = 0;
-    let timer = null;
-    let verified = false;
+const REQUIRED = 10;
 
-    const timerDisplay =
-        document.getElementById("timerDisplay");
+let time = 0;
+let interval = null;
 
-    const watchBtn =
-        document.getElementById("watchBtn");
+const start =
+    document.getElementById("start");
 
-    const statusText =
-        document.getElementById("statusText");
+const timer =
+    document.getElementById("timer");
 
-    const progressBar =
-        document.getElementById("progressBar");
+const progress =
+    document.getElementById("progress");
 
-    const keyContainer =
-        document.getElementById("keyContainer");
+const status =
+    document.getElementById("status");
 
-    const keyDisplay =
-        document.getElementById("keyDisplay");
+const keyBox =
+    document.getElementById("keyBox");
 
-    const copyBtn =
-        document.getElementById("copyBtn");
+const key =
+    document.getElementById("key");
+
+const copy =
+    document.getElementById("copy");
 
 
-    /*
-     * IMPORTANT :
-     * Une clé présente uniquement dans le JavaScript
-     * n'est pas une vraie sécurité.
-     *
-     * Pour un vrai système de clés, la génération/
-     * validation doit être faite côté serveur.
-     */
+function randomKey() {
 
-    const VALID_KEYS = [
-        "SAKURA-2026",
-        "SAKURA2026",
-        "ABCD-1234-EFGH",
-        "FREE-00XY",
-        "DEMO-KEY",
-        "X7K9-2P4M-8R3T",
-        "S1K2-A3R4-U5T6",
-        "P9R8-O7I6-U5Y4"
+    return KEYS[
+        Math.floor(
+            Math.random() * KEYS.length
+        )
     ];
 
-
-    function getRandomKey() {
-        const index =
-            Math.floor(Math.random() * VALID_KEYS.length);
-
-        return VALID_KEYS[index];
-    }
+}
 
 
-    function updateProgress() {
+function update() {
 
-        const percentage =
-            Math.min(
-                (elapsed / REQUIRED_TIME) * 100,
-                100
-            );
+    timer.textContent =
+        `${time}s`;
 
-        timerDisplay.textContent =
-            `${elapsed}s`;
+    progress.style.width =
+        `${(time / REQUIRED) * 100}%`;
 
-        progressBar.style.width =
-            `${percentage}%`;
-    }
+}
 
 
-    function startTimer() {
+start.addEventListener("click", () => {
 
-        if (timer || verified) {
-            return;
+    if (interval) return;
+
+    time = 0;
+
+    start.disabled = true;
+    start.textContent = "⏳ Vérification...";
+
+    status.textContent =
+        "📹 Vérification en cours...";
+
+    interval = setInterval(() => {
+
+        time++;
+
+        update();
+
+        if (time >= REQUIRED) {
+
+            clearInterval(interval);
+            interval = null;
+
+            progress.style.width = "100%";
+
+            start.textContent =
+                "✓ Vérifié";
+
+            status.textContent =
+                "✓ Vérification terminée !";
+
+            status.className =
+                "status done";
+
+            key.textContent =
+                randomKey();
+
+            keyBox.classList.add("show");
         }
 
-        elapsed = 0;
-        updateProgress();
+    }, 1000);
 
-        watchBtn.disabled = true;
-        watchBtn.textContent = "⏳ Vérification...";
+});
 
-        statusText.textContent =
-            "📹 Vérification en cours...";
 
-        statusText.className = "status";
+copy.addEventListener("click", async () => {
 
-        timer = setInterval(() => {
+    try {
 
-            elapsed++;
+        await navigator.clipboard.writeText(
+            key.textContent
+        );
 
-            updateProgress();
+        copy.textContent =
+            "✓ Copié !";
 
-            if (elapsed >= REQUIRED_TIME) {
+        setTimeout(() => {
+            copy.textContent =
+                "📋 Copier la clé";
+        }, 2000);
 
-                clearInterval(timer);
-                timer = null;
+    } catch {
 
-                completeVerification();
-            }
+        const area =
+            document.createElement("textarea");
 
-        }, 1000);
+        area.value =
+            key.textContent;
+
+        document.body.appendChild(area);
+
+        area.select();
+
+        document.execCommand("copy");
+
+        area.remove();
+
+        copy.textContent =
+            "✓ Copié !";
     }
 
+});
 
-    function completeVerification() {
-
-        verified = true;
-
-        watchBtn.disabled = true;
-        watchBtn.textContent = "✓ Vérifié";
-        watchBtn.className = "timer-btn done";
-
-        statusText.textContent =
-            "✓ Vérification terminée — clé débloquée !";
-
-        statusText.className = "status done";
-
-        generateKey();
-    }
-
-
-    function generateKey() {
-
-        const key = getRandomKey();
-
-        keyDisplay.value = key;
-
-        keyContainer.classList.add("show");
-
-        /*
-         * On ne place volontairement PAS la clé
-         * dans l'URL : sinon n'importe qui peut
-         * modifier ?key=... manuellement.
-         */
-    }
-
-
-    watchBtn.addEventListener(
-        "click",
-        startTimer
-    );
-
-
-    copyBtn.addEventListener(
-        "click",
-        async () => {
-
-            const key = keyDisplay.value;
-
-            if (!key) {
-                return;
-            }
-
-            try {
-
-                await navigator.clipboard.writeText(key);
-
-                copyBtn.textContent =
-                    "✓ Clé copiée !";
-
-                setTimeout(() => {
-
-                    copyBtn.textContent =
-                        "📋 Copier la clé";
-
-                }, 2000);
-
-            } catch {
-
-                keyDisplay.select();
-
-                document.execCommand("copy");
-
-                copyBtn.textContent =
-                    "✓ Clé copiée !";
-
-                setTimeout(() => {
-
-                    copyBtn.textContent =
-                        "📋 Copier la clé";
-
-                }, 2000);
-            }
-        }
-    );
 </script>
 
 </body>
